@@ -20,6 +20,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,10 @@ import { MatButtonModule } from '@angular/material/button';
     WomenComponent,
     SportsComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignInComponent,
+    SignUpComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

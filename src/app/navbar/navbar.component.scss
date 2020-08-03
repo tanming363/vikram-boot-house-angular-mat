@@ -1,6 +1,6 @@
-.sidenav-container {
-  height: 100%;
-}
+// .sidenav-container {
+//   // height: 100%;
+// }
 .sidenav {
   width: 200px;
   position: fixed;
@@ -19,7 +19,7 @@
 .content {
   overflow: hidden;
   padding: 20px;
-  margin-top: 60px;
+  margin: 60px 0;
 }
 .mat-drawer-content {
   position: relative;
@@ -42,7 +42,7 @@ a {
 .nav-link {
   text-decoration: none;
   font-size: 16px;
-  padding: 7px 16px;
+  padding: 20px 16px;
 }
 .sidebar-link {
   cursor: pointer;
@@ -55,6 +55,11 @@ a {
 mat-nav-list {
   width: 200px;
 }
-// mat-list-item{
-//   text-align: center;
-// }
+
+::ng-deep .mat-badge-content {
+  background: #ba7b48;
+  color: black;
+}
+.sign {
+  margin-left: 20px;
+}

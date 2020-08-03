@@ -11,5 +11,10 @@ export class ChildComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  isMobile() {
+    return true
+  }
+  isDesk() {
+    return false
+  }
 }

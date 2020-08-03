@@ -49,10 +49,16 @@
         <a class="nav-link" [routerLink]="[ '/sports' ]" routerLinkActive="active">Sports</a>
       </div>
 
+      <button mat-icon-button>
+        <mat-icon matBadge="15" [routerLink]="[ '/cart' ]">shopping_cart</mat-icon>
+      </button>
+
+      <a class="sign" mat-stroked-button [routerLink]="[ '/sign-in' ]" >Sign In</a>
+      <a class="sign" mat-stroked-button [routerLink]="[ '/sign-up' ]" >Sign Up</a>
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="content">
-
+      <router-outlet></router-outlet>
     </div>
 
   </mat-sidenav-content>

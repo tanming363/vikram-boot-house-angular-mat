@@ -13,7 +13,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatSelectModule } from '@angular/material/select';
 const MaterialComponents = [
   MatInputModule,
   MatCardModule,
@@ -28,7 +29,9 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatPaginatorModule,
   MatDialogModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatBadgeModule,
+  MatSelectModule
 ]
 
 @NgModule({

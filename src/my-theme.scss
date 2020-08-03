@@ -1,0 +1,78 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+$md-primary: (
+  50: #fbf8f2,
+  100: #f4eddf,
+  200: #ede1ca,
+  300: #e6d4b5,
+  400: #e0cba5,
+  500: #dbc295,
+  600: #d7bc8d,
+  700: #d2b482,
+  800: #cdac78,
+  900: #c49f67,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffecd0,
+  A700: #ffe2b7,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-accent: (
+  50: #f7efe9,
+  100: #ead7c8,
+  200: #ddbda4,
+  300: #cfa37f,
+  400: #c48f63,
+  500: #ba7b48,
+  600: #b37341,
+  700: #ab6838,
+  800: #a35e30,
+  900: #944b21,
+  A100: #ffe0d0,
+  A200: #ffbe9d,
+  A400: #ff9d6a,
+  A700: #ff8c51,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+// mandatory stuff for theming
+$bv-palette-primary: mat-palette($md-primary);
+$bv-palette-accent: mat-palette($md-accent);
+
+// include the custom theme components into a theme object
+$bv-theme: mat-light-theme($bv-palette-primary, $bv-palette-accent);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($bv-theme);

@@ -1,0 +1,29 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+        <mat-card>
+                <div class="container">
+                        <div class="mat-headline">Sign In</div>
+                        <mat-form-field appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="email">
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>email</mat-icon>
+                                </button>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                                <mat-label>Password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                        </mat-form-field>
+                        <br>
+                        <button mat-raised-button color="primary">Sign In</button>
+                        <br>
+                        <a [routerLink]="[ '/sign-up' ]">Register your account?</a>
+                </div>
+
+        </mat-card>
+</div>

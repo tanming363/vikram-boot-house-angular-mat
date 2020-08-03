@@ -51,6 +51,7 @@ span {
 .top {
   margin-right: 5px;
   transition: all 0.3s;
+  margin-bottom: 50px;
 }
 .top:hover {
   transform: translateY(-6px);
@@ -91,12 +92,7 @@ span {
   input::-webkit-input-placeholder {
     color: #dbc295 !important;
   }
-  input.mat-input-element {
-    color: #dbc295 !important;
-  }
-  .mat-input-element {
-    caret-color: #dbc295 !important;
-  }
+ 
   .mat-tooltip {
     background-color: #dbc295 !important;
     color: #1c2a2e !important;

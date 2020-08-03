@@ -1,0 +1,26 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+        <mat-card>
+                <div class="container">
+                        <div class="mat-headline">Sign Up</div>
+                        <mat-form-field appearance="fill">
+                                <mat-label>Full Name</mat-label>
+                                <input matInput type="email">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="email">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field appearance="fill">
+                                <mat-label>Password</mat-label>
+                                <input matInput type="text">
+                        </mat-form-field>
+                        <br>
+                        <button mat-raised-button>Sign Up</button>
+                        <br>
+                        <a [routerLink]="[ '/sign-in' ]">Already have account?</a>
+                </div>
+
+        </mat-card>
+</div>

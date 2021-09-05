@@ -1,62 +1,89 @@
-<mat-card>
-        <div fxLayoutAlign="space-between start" fxLayout.xs="column">
-
-                <div fxLayoutAlign="space-between start">
-                        <div fxLayoutAlign.xs="start start">
-                                <img src="assets/img/demo.jpg" width="100">
-                        </div>
-                        <div fxLayout.xs="column" fxLayoutAlign="space-between start">
-
-                                <ul class="details">
-                                        <li>
-                                                <h3 class="brand-name" body-2>Nike Air Max 90</h3>
-                                        </li>
-                                        <li>
-                                                <p class="brand-details">Man's shoes</p>
-                                        </li>
-                                        <li>
-                                                <p class="brand-details">Color : Black</p>
-                                        </li>
-                                        <li>
-                                                <p class="brand-details">Size : 8</p>
-                                        </li>
-                                        <!-- <div fxLayout="row">
+<div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
+        <mat-card class="product-description-card" fxFlex="65">
+                <div gdColumns="86px 1fr" gdGap="15px">
+                        <img src="assets/img/demo.jpg" width="86" height="124">
+                        <ul>
+                                <div gdColumns="1fr 1fr" gdRows="1fr">
+                                        <div>
                                                 <li>
-                                                        <i class="material-icons material-icons-outlined">delete</i>
-                                                        <span class="brand-details">Remove the product</span> &nbsp;
-                                                        |&nbsp;
+                                                        <h3 class="brand-name" body-2>Nike Air Max 90</h3>
                                                 </li>
                                                 <li>
-                                                        <i
-                                                                class="material-icons material-icons-outlined">favorite_border</i>
-                                                        <span class="brand-details">Move to wish list</span>
+                                                        <p class="brand-details">Man's shoes</p>
                                                 </li>
-                                        </div> -->
-                                </ul>
-
-                                <div fxLayout="column" fxFlexAlign.xs="center" fxLayoutAlign="end end">
-                                        <ul>
+                                                <li>
+                                                        <p class="brand-details">Color : Black</p>
+                                                </li>
+                                                <li>
+                                                        <p class="brand-details">Size : 8</p>
+                                                </li>
+                                        </div>
+                                        <div class="select-quantity">
                                                 <li>
                                                         <mat-form-field appearance="outline">
                                                                 <mat-label>Select Quantity</mat-label>
-                                                                <mat-select>
-                                                                        <mat-option> 1 </mat-option>
-                                                                        <mat-option> 2 </mat-option>
-                                                                        <mat-option> 3 </mat-option>
-                                                                        <mat-option> 4 </mat-option>
-                                                                        <mat-option> 5 </mat-option>
-                                                                        <mat-option> 6 </mat-option>
+                                                                <mat-select [(ngModel)]="selectedValue" name="quantity">
+                                                                        <mat-option *ngFor="let quantity of quantities"
+                                                                                [value]="quantity.value">
+                                                                                {{quantity.viewValue}}
+                                                                        </mat-option>
                                                                 </mat-select>
                                                         </mat-form-field>
                                                 </li>
-
+                                        </div>
+                                        <div class="action-icons" fxLayout="row" fxLayout.xs="column">
                                                 <li>
-                                                        <h3 class="brand-price" body-2>Price : ₹500</h3>
+                                                        <button class="btn-remove" mat-raised-button>
+                                                                <i
+                                                                        class="material-icons material-icons-outlined">delete</i>
+                                                                <span class="brand-details remove">Remove</span>
+                                                        </button>
                                                 </li>
-
-                                        </ul>
+                                                <li class="divider"></li>
+                                                <li>
+                                                        <button class="btn-wish-list" mat-raised-button>
+                                                                <i
+                                                                        class="material-icons material-icons-outlined">favorite_border</i>
+                                                                <span class="brand-details wish-list">Wish list</span>
+                                                        </button>
+                                                </li>
+                                        </div>
                                 </div>
-                        </div>
+
+                                <div fxLayout="row" fxLayoutAlign="space-between end" fxLayout.xs="column"
+                                        fxLayoutAlign.xs="space-between start">
+                                        <div class="shipping">
+                                                <li>
+                                                        <i
+                                                                class="material-icons material-icons-outlined">local_shipping</i>
+                                                        <span class="brand-details">Expected delivery. Wed, 09/09 - Fri,
+                                                                10/09</span>
+                                                </li>
+                                        </div>
+                                        <div class="price">
+                                                <li fxLayoutAlign="end">
+                                                        <h3 class="brand-price">Price : ₹500</h3>
+                                                </li>
+                                        </div>
+                                </div>
+                        </ul>
                 </div>
-        </div>
-</mat-card>
+        </mat-card>
+        <mat-card class="total-payment-card" fxFlex="35">
+                <h1>To pay</h1>
+                <div fxLayoutAlign="space-between start">
+                        <span>Price of the products</span>
+                        <span>₹ 500.00</span>
+                </div>
+                <div fxLayoutAlign="space-between start">
+                        <span>Delivery charge</span>
+                        <span>₹ 0.00</span>
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayoutAlign="space-between start">
+                        <h2>Total</h2>
+                        <h2>₹ 500.00</h2>
+                </div>
+                <button mat-flat-button>Proceed to checkout</button>
+        </mat-card>
+</div>

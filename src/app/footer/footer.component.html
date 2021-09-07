@@ -1,57 +1,48 @@
-<div class="footer">
+<div class="footer" fxLayoutAlign.xs="space-between center">
   <div fxLayout="row" fxLayout.xs="column" fxFlexFill>
-
-    <div fxFlex="30" class="sec1" fxFlex.xs="55">
+    <div fxFlex="1fr" class="brand-img" fxFlex.xs="55">
       <img src="assets/img/footer2.png" style="width: 70%;">
     </div>
-
-    <div fxFlex="35" class="sec2" fxLayoutAlign="start start">
-
+    <div fxFlex="1fr" class="contact-us" fxLayoutAlign="start start" fxLayout.xs="column"
+      fxLayoutAlign.xs="space-between center">
       <mat-list role="list">
         <mat-list-item>
-          <h3 class="mat-h4">CONTACT US</h3>
+          <h3>CONTACT US</h3>
         </mat-list-item>
-
         <mat-list-item>
           <a mat-mini-fab
             href="https://www.google.com/maps/place/Vikram+Boot+House,+Gondpipri/@19.7189543,79.6882002,19z/data=!4m5!3m4!1s0x0:0x363616e4a981aded!8m2!3d19.7189543!4d79.6887247"
             target="_blank">
             <mat-icon>room</mat-icon>
-          </a><span>Gondpipari, Maharashtra <br class="break">442702, India</span>
+          </a><span>Gondpipari, Maharashtra 442702, India</span>
         </mat-list-item>
-
         <mat-list-item>
           <a mat-mini-fab href="https://www.whatsapp.com/" target="_blank">
             <mat-icon>call</mat-icon>
           </a><span>+91 8999912022</span>
         </mat-list-item>
-
         <mat-list-item>
           <a mat-mini-fab href="https://mail.google.com/" target="_blank">
             <mat-icon>email</mat-icon>
           </a><span>ingolevikram195@gmail.com</span>
         </mat-list-item>
       </mat-list>
-
     </div>
-
-    <div fxFlex="35" class="sec3" fxLayoutAlign="start start">
+    <div fxFlex="1fr" class="subscribe" fxLayoutAlign="start start" fxLayout.xs="column"
+      fxLayoutAlign.xs="space-between center">
       <mat-list role="list">
         <mat-list-item>
-          <h3 class="mat-h4 subscribe">SUBSCRIBE NEWSLETTER</h3>
+          <h3>SUBSCRIBE NEWSLETTER</h3>
         </mat-list-item>
-
         <mat-list-item>
           <mat-form-field appearance="outline" color="primary">
             <mat-label>Email</mat-label>
             <input matInput placeholder="Your Email">
           </mat-form-field>
         </mat-list-item>
-        <br>
         <mat-list-item>
           <button mat-raised-button color="accent">SUBSCRIBE</button>
         </mat-list-item>
-
         <mat-list-item class="social">
           <a target="_blank" href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-2x"></i></a>
           <a target="_blank" href="https://web.whatsapp.com/"><i class="fab fa-whatsapp-square fa-2x"></i></a>
@@ -66,10 +57,8 @@
       </button>
     </div>
   </div>
-  <br>
-  <br>
-  <div class="container">
-    <mat-divider></mat-divider>
-    <p>All rights reserved to Vikram Boot House | Copyright ©2020.</p>
-  </div>
+</div>
+<mat-divider></mat-divider>
+<div class="footer-bottom">
+  <p>All rights reserved to Vikram Boot House | Copyright ©2020.</p>
 </div>

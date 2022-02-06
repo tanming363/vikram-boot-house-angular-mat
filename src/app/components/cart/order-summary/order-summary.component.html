@@ -1,0 +1,22 @@
+<div class="total-payment-card">
+            <h1 class="cart-heading">Order Summary</h1>
+            <div fxLayoutAlign="space-between start">
+                        <span>Price of the products</span>
+                        <!-- <span>{{ total | currency:'INR'}}</span> -->
+            </div>
+            <div fxLayoutAlign="space-between start">
+                        <span>Delivery charge</span>
+                        <span>₹ 0.00</span>
+            </div>
+            <div class="spacer"></div>
+            <mat-divider></mat-divider>
+            <div class="final-total" fxLayoutAlign="space-between start">
+                        <h2>Final Total</h2>
+                        <!-- <h2>
+                                    {{numOfItemInCart}} {{numOfItemInCart > 1 ? 'items':'item'}}: {{
+                                    total |
+                                    currency:'INR'}}
+                        </h2> -->
+            </div>
+            <button class="btn-primary" color="primary" mat-flat-button>Proceed to checkout</button>
+</div>

@@ -1,0 +1,269 @@
+{
+  "Products": [
+    {
+      "id": "1",
+      "articleNo": 2413,
+      "title": "terrex ax4 primegreen hiking shoes",
+      "price": 20000,
+      "discount": 10,
+      "color": "red",
+      "numOfColor": 3,
+      "category": "kids",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting",
+      "tags": [
+        "red",
+        7,
+        8,
+        9,
+        10
+      ],
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/4ae83a76bd7743e5ac11ad4f0116528b_9366/terrex-ax4-primegreen-hiking-shoes.jpg",
+      "otherImages": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/11c1ffbf7ae643d5a68bad4f00ac1c90_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Pomaranczowy_FZ3282_01_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/88ed7dc51a9049978addad4f00ac2fc7_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Pomaranczowy_FZ3282_02_standard_hover.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/12058f4986f04aa18df9ad4f00ac42eb_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Pomaranczowy_FZ3282_04_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/a3973079e6fc486586fdad4f01164884_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Pomaranczowy_FZ3282_09_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/7fa7c10b68af40c0a940ad4f00ac55a5_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Pomaranczowy_FZ3282_41_detail.jpg"
+      ],
+      "rating": "4 star"
+    },
+    {
+      "id": "2",
+      "articleNo": 2413,
+      "title": "terrex ax4 primegreen hiking shoes",
+      "price": 200,
+      "discount": 20,
+      "color": "blue",
+      "numOfColor": 3,
+      "category": "ladies",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting",
+      "tags": [
+        "blue",
+        7,
+        9,
+        10
+      ],
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/9f4e84690ff143599698ad5201059b6f_9366/terrex-ax4-primegreen-hiking-shoes.jpg",
+      "otherImages": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/548a2b86cd8f43758534ad3500cad80e_9366/Terrex_Skyhiker_GORE-TEX_Hiking_Shoes_Niebieski_FZ3345_02_standard_hover.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/ac139340b5f948118332ad3500cae395_9366/Terrex_Skyhiker_GORE-TEX_Hiking_Shoes_Niebieski_FZ3345_04_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg"
+      ],
+      "rating": "4 star"
+    },
+    {
+      "id": "3",
+      "articleNo": 2413,
+      "title": "terrex ax4 primegreen hiking shoes",
+      "price": 250,
+      "discount": 30,
+      "color": "darkolivegreen",
+      "numOfColor": 3,
+      "category": "ladies",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting",
+      "tags": [
+        "darkolivegreen",
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "sizeAndqty": [
+        {
+          "forSize": 6,
+          "availableQty": 2
+        },
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/083e8726fa1a44bba1c2ad520105b17a_9366/terrex-ax4-primegreen-hiking-shoes.jpg",
+      "otherImages": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/73459b1586de41e491e9ad5200e51840_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Zielony_GY5077_01_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/bd2d0bf8d4634e87b106ad5200e5260e_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Zielony_GY5077_02_standard_hover.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/5f408e41352c43b18635ad5200e533b5_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Zielony_GY5077_04_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/89859cef415d4b678654ad5200e55308_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Zielony_GY5077_09_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/ea9c2ccadfdb45aca536ad5200e54208_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Zielony_GY5077_41_detail.jpg"
+      ],
+      "rating": "4 star"
+    },
+    {
+      "id": "4",
+      "articleNo": 2414,
+      "title": "NMD_R1 shoes",
+      "price": 500,
+      "discount": null,
+      "color": "lightgreen",
+      "numOfColor": 3,
+      "category": "gents",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting",
+      "tags": [
+        "lightgreen",
+        7,
+        8,
+        9,
+        10
+      ],
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/7299c76760a9492da2d2ad1301270436_9366/ultraboost-5.0-dna-shoes.jpg",
+      "otherImages": [
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/9a98dc6738654629be1fad3b00a24ebd_9366/Ultraboost_5.0_DNA_Shoes_Bialy_GY0863_01_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/ec50729d7ff140bd87b7ad3b00a25bb4_9366/Ultraboost_5.0_DNA_Shoes_Bialy_GY0863_02_standard_hover.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/3180f04ecdc14c9fbb71ad3b00a2692b_9366/Ultraboost_5.0_DNA_Shoes_Bialy_GY0863_04_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/3180f04ecdc14c9fbb71ad3b00a2692b_9366/Ultraboost_5.0_DNA_Shoes_Bialy_GY0863_04_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/5f299546e3b347e4ae13ad3b00b2d8fc_9366/Ultraboost_5.0_DNA_Shoes_Bialy_GY0863_41_detail.jpg"
+      ],
+      "rating": "4 star"
+    },
+    {
+      "id": "5",
+      "articleNo": 2414,
+      "title": "NMD_R1 shoes",
+      "price": 1000,
+      "discount": 50,
+      "color": "lightblue",
+      "numOfColor": 3,
+      "category": "gents",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting",
+      "tags": [
+        "lightblue",
+        7,
+        8,
+        9,
+        10
+      ],
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/a673abf86fbd4d8a96f5acc3004b87c9_9366/ultraboost-5.0-dna-shoes.jpg",
+      "otherImages": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/ff0e2b00bf064c0282e0acc3004b6788_9366/Ultraboost_5.0_DNA_Shoes_Szary_GV7715_01_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/3e0739a1d69c4574a100acc3006e60c4_9366/Ultraboost_5.0_DNA_Shoes_Szary_GV7715_02_standard_hover.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/7fd188eb32e749c6b966acc3004ce7e5_9366/Ultraboost_5.0_DNA_Shoes_Szary_GV7715_05_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/8d20b63b62ab4983a122acc3004e2bb1_9366/Ultraboost_5.0_DNA_Shoes_Szary_GV7715_41_detail.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/e8988b1cf29a4de9a4b5acc3004dc2e7_9366/Ultraboost_5.0_DNA_Shoes_Szary_GV7715_42_detail.jpg"
+      ],
+      "rating": "4 star"
+    },
+    {
+      "id": "6",
+      "articleNo": 2414,
+      "title": "NMD_R1 shoes",
+      "price": 1500,
+      "discount": null,
+      "color": "black",
+      "numOfColor": 3,
+      "category": "gents",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting",
+      "tags": [
+        "black",
+        5,
+        9,
+        10
+      ],
+      "sizeAndqty": [
+        {
+          "forSize": 5,
+          "availableQty": 1
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/2b83bcaba7df4df0a64bad25010d534c_9366/nmd_r1-shoes.jpg",
+      "otherImages": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/145d0b6cb4494b66a9f9ad2500cafe88_9366/NMD_R1_Shoes_Szary_GZ7945_01_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/6fb1112df8044304bb0bad2500cb0a7f_9366/NMD_R1_Shoes_Szary_GZ7945_02_standard_hover.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/9968ad0a4a34465c904dad2500cb176e_9366/NMD_R1_Shoes_Szary_GZ7945_04_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/69de8e33f7804425ae0fad2500cb1d55_9366/NMD_R1_Shoes_Szary_GZ7945_05_standard.jpg",
+        "https://assets.adidas.com/images/h_2000,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/0018b3575811487da460ad2500cb32ac_9366/NMD_R1_Shoes_Szary_GZ7945_09_standard.jpg"
+      ],
+      "rating": "4 star"
+    }
+  ]
+}

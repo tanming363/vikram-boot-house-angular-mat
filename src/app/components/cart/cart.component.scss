@@ -1,0 +1,219 @@
+.product-description-card {
+  .brand-name {
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 2px 0px;
+    color: black;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+  }
+  .brand-details {
+    font-size: 14px;
+    margin-bottom: 0;
+    padding: 2px 0px;
+    text-transform: capitalize;
+  }
+  .price {
+    .brand-price {
+      font-weight: 500;
+      font-size: 16px;
+      color: black;
+      margin: 0;
+    }
+  }
+  li {
+    mat-divider {
+      position: inherit;
+    }
+  }
+  .material-icons {
+    font-size: 18px;
+    padding: 7px 7px 7px 0;
+  }
+  .action-icons {
+    .divider {
+      margin: 0 5px;
+    }
+  }
+  mat-card-content {
+    margin-bottom: 0;
+    a {
+      cursor: pointer;
+    }
+  }
+  // .cart-heading {
+  //   font-size: 28px;
+  //   font-weight: 600;
+  // }
+}
+
+ul {
+  li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  margin: 0;
+  padding-left: 0px;
+}
+
+.mat-flat-button {
+  background: #ba7b48;
+  color: #dbc295;
+}
+.app-order-summary {
+  height: 275px;
+}
+.subtotal {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -2px;
+  font-weight: 600;
+  font-size: 20px;
+  color: black;
+  margin: 0;
+}
+.empty-cart {
+  text-align: center;
+  padding: 0px 16px;
+
+  .material-icons-outlined {
+    font-size: 100px;
+  }
+  .no-product {
+    font-weight: 700;
+  }
+  button {
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 2800px) {
+  .product-image {
+    // width: 89%;
+    height: 96%;
+  }
+  .select-quantity {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    order: 0;
+  }
+  mat-divider {
+    margin-top: -4px;
+  }
+}
+@media (max-width: 600px) {
+  .brand-name {
+    line-height: 19px;
+  }
+  .product-image {
+    width: 86px;
+    height: 140px;
+  }
+  .price {
+    display: flex;
+    order: -1;
+  }
+  .action-icons {
+    li {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .material-icons {
+      padding: 0;
+    }
+    button {
+      box-sizing: border-box;
+      position: relative;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      display: inline-block;
+      white-space: nowrap;
+      text-decoration: none;
+      vertical-align: baseline;
+      text-align: center;
+      margin: 0;
+      min-width: 64px;
+      line-height: 36px;
+      padding: 0 16px;
+      border-radius: 4px;
+      overflow: visible;
+      transform: translate3d(0, 0, 0);
+      transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+      min-width: 0;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      flex-shrink: 0;
+      margin-bottom: 5px;
+    }
+    .remove,
+    .wish-list {
+      display: none;
+    }
+    mat-divider {
+      margin-top: 4px;
+    }
+  }
+
+  .select-quantity {
+    display: flex;
+    justify-content: flex-start !important;
+    order: 1;
+  }
+  .divider {
+    display: none !important;
+  }
+}
+.mat-raised-button {
+  padding: 0px 10px 0px 8px;
+  margin-bottom: 4px;
+  margin-top: 7px;
+}
+h1 {
+  margin: 0 0 16px 0;
+  padding: 0px;
+  font-size: 24px;
+  font-weight: 500;
+}
+::ng-deep {
+  .mat-card-header-text {
+    margin: 0 !important;
+  }
+  .select-quantity {
+    .mat-form-field-flex > .mat-form-field-infix {
+      padding: 0.4em 0px !important;
+    }
+    .mat-form-field-label-wrapper {
+      top: -1.5em;
+    }
+    .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+      .mat-form-field-label {
+      transform: translateY(-1.1em) scale(0.75);
+      width: 133.33333%;
+    }
+    .mat-form-field,
+    .mat-form-field-infix {
+      width: 140px;
+    }
+    .mat-form-field-wrapper {
+      padding: 5px 0;
+    }
+  }
+}
+
+::ng-deep {
+  mat-card {
+    margin: 10px;
+    padding: 0 15px;
+  }
+}

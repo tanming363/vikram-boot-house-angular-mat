@@ -1,0 +1,800 @@
+<div class="view-product" *ngIf="product">
+        <div class="pictures">
+                <img (mouseover)="changeImage('assets/imgs/img1.webp', 1)" src="assets/imgs/img1.webp" id="pic1">
+                <img (mouseover)="changeImage('assets/imgs/img2.webp', 2)" src="assets/imgs/img2.webp" id="pic2">
+                <img (mouseover)="changeImage('assets/imgs/img3.webp', 3)" src="assets/imgs/img3.webp" id="pic3">
+                <img (mouseover)="changeImage('assets/imgs/img4.webp', 4)" src="assets/imgs/img4.webp" id="pic4">
+                <img (mouseover)="changeImage('assets/imgs/img5.webp', 5)" src="assets/imgs/img5.webp" id="pic5">
+                <img (mouseover)="changeImage('assets/imgs/img7.webp', 6)" src="assets/imgs/img7.webp" id="pic6">
+                <!-- <div *ngFor="let productImage of productImages;index as i">
+                        <img [src]="productImage" [alt]="productImage" (mouseover)="changeImage(productImage, i)"
+                                id="i">
+                </div> -->
+        </div>
+        <div class="picture" id="picture" (mousemove)="showingZoomImg($event)">
+                <div class="rect" id="rect"></div>
+                <!-- <img id="pic" [src]="defaultImage"> -->
+                <img id="pic" src="assets/imgs/img1.webp">
+        </div>
+
+        <div class="view-cart">
+                <div>
+                        <h1 class="view-cart__title"><i>{{product.title}}</i></h1>
+                        <!-- <span class="view-product__category">{{product.category}}</span> -->
+                        <!-- <span class="view-product__description">{{product.description}}</span> -->
+                        <span class="view-cart__price">{{product.price | currency:'INR'}}</span>
+                        <!-- <span class="view-product__colors" *ngFor="let color of availableColors">
+                        {{color}}
+                </span> -->
+                        <form #f="ngForm" (ngSubmit)="f.form.valid && onSelectedQty()">
+                                <section class="view-product-size-section">
+                                        <span class="view-product-size-section__size">Choose Size</span>
+                                        <mat-radio-group class="view-product-size-section__size-box" name="selectedSize"
+                                                [(ngModel)]="model.selectedSize" #selectedSize="ngModel"
+                                                [ngClass]="{'invalid-data': selectedSize.invalid && f.submitted, 'valid-data': selectedSize.valid && f.submitted}"
+                                                required>
+                                                <mat-radio-button [value]="size"
+                                                        *ngFor="let size of availableSizes;index as i"
+                                                        (click)="getSize(size,i)">
+                                                        {{size}}
+                                                </mat-radio-button>
+                                        </mat-radio-group>
+                                        <a class="view-product-size-section__size-guidance" (click)="openDialog()">
+                                                <span class="material-icons-outlined">
+                                                        straighten
+                                                </span> &nbsp;
+                                                <p> Size guidance </p>
+                                        </a>
+                                </section>
+
+                                <section class="view-product-qty-section">
+                                        <span class="view-product-qty-section__quantity">Choose Quantity</span>
+                                        <mat-form-field appearance="outline">
+                                                <mat-label>Quantity</mat-label>
+                                                <mat-select name="selectedQty" [(ngModel)]="model.selectedQty"
+                                                        #selectedQty="ngModel"
+                                                        [ngClass]="{'invalid-data': selectedQty.invalid && f.submitted, 'valid-data': selectedQty.valid && f.submitted}"
+                                                        required>
+                                                        <mat-option *ngFor="let product of availableStock"
+                                                                [value]="product.value">
+                                                                {{product.viewValue}}
+                                                        </mat-option>
+                                                </mat-select>
+                                        </mat-form-field>
+                                        <small class="alert" *ngIf="selectedSize.valid">
+                                                <div *ngIf="alertQty!==0">
+                                                        Don't miss it! There is only {{alertQty}} in stock
+                                                        for size
+                                                        {{alertSize}}
+                                                </div>
+                                                <div *ngIf="alertQty===0">
+                                                        That was the last pair available which you added to your cart.
+                                                        Now this
+                                                        product is not available.
+                                                </div>
+                                        </small>
+                                </section>
+                                <section class="view-product-colors-section">
+                                        <span class="view-product-colors-section__color">Choose Color</span>
+                                        <mat-radio-group class="view-product-colors-section__color-box"
+                                                name="selectedColor" [(ngModel)]="model.selectedColor">
+                                                <mat-radio-button *ngFor="let color of availableColors"
+                                                        (click)="getSelectedColorProduct(color)">
+                                                        <img width="50" [src]="color.image" [alt]="color.image">
+                                                </mat-radio-button>
+                                        </mat-radio-group>
+                                </section>
+                                <br>
+                                <button class="btn-default" type="submit" mat-raised-button
+                                        (click)="addItemToCart(product)" [disabled]="!f.form.valid || disabled">
+                                        Add to Cart
+                                </button>
+                                <button class="btn-primary" mat-flat-button (click)="buyNow(product)">Buy Now</button>
+                        </form>
+                </div>
+                <div class="zoom" id="zoom"></div>
+        </div>
+</div>
+
+<ng-container>
+        <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="First">Content 1</mat-tab>
+                <mat-tab label="Second">Content 2</mat-tab>
+                <mat-tab label="Third">Content 3</mat-tab>
+        </mat-tab-group>
+</ng-container>
+
+
+/////////////////////////////////////////////////////////////
+
+import { AfterViewChecked, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { map } from "rxjs/operators";
+
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+import { sizeAndQtyModel } from 'src/app/models/cart.model';
+import { CartService } from 'src/app/services/cart.service';
+import { ProductsService } from 'src/app/services/products.service';
+
+
+@Component({
+selector: 'app-view-product',
+templateUrl: './view-product.component.html',
+styleUrls: ['./view-product.component.scss']
+})
+
+export class ViewProductComponent implements OnInit, AfterViewChecked {
+product;
+availableStock = [];
+availableColors = [];
+availableSizes = [];
+availableQuantities = [];
+itemsInCart: number = 0;
+id;
+alertSize: number;
+alertQty: number;
+disabled: boolean = false;
+
+onEnterColor;
+selectedColor: string;
+
+////// zoom image
+picture1;
+picture2;
+picture3;
+picture4;
+picture5;
+picture6;
+picture;
+mainContainer;
+rect;
+zoom;
+w1;
+h1;
+w2;
+h2;
+x;
+y;
+xx;
+yy;
+picActive = 1;
+ratio = 3;
+defaultImage: string;
+picList = [];
+
+productImages = [];
+
+constructor(
+private cartService: CartService,
+private productService: ProductsService,
+private activatedRoute: ActivatedRoute,
+public dialog: MatDialog,
+private router: Router
+) { }
+
+model: sizeAndQtyModel = {
+selectedQty: null,
+selectedSize: null,
+};
+
+ngOnInit(): void {
+this.activatedRoute.paramMap.pipe(
+map((param: ParamMap) => {
+// @ts-ignore
+return param.params.id;
+})
+).subscribe(prodId => {
+this.id = prodId;
+this.productService.getSingleProduct(this.id).subscribe((prod: any) => {
+prod.colors.forEach(color => {
+this.availableColors.push(color)
+})
+
+let filterArr = prod.variants.filter((el, pos) => {
+return prod.variants.indexOf(el) == pos;
+})
+
+filterArr = this.removeDuplicates(filterArr, '');
+
+filterArr[0].sizeAndqty.forEach(el => {
+this.availableSizes.push(el.forSize);
+this.availableQuantities.push(el.availableQty);
+})
+this.product = prod;
+})
+})
+}
+
+onSelectedQty() {
+return [
+this.model.selectedQty,
+this.model.selectedSize
+]
+}
+
+// ADD TO CART
+addItemToCart(product) {
+let selectedQtySizeArr = this.onSelectedQty();
+let selectedQtySizeObj = { selectedQty: selectedQtySizeArr[0], selectedSize: selectedQtySizeArr[1] };
+product.selectedSize = selectedQtySizeArr[1];
+this.cartService.addtoCart(product, selectedQtySizeObj);
+}
+
+getSize(size, index) {
+this.alertSize = size;
+this.availableQuantities.forEach((el, i) => {
+if (index === i) {
+this.availableStock = []
+for (let j = 1; j < el + 1; j++) { this.alertQty=el; this.availableStock.push({ value: j, viewValue: j }); } } });
+        this.availableStock=this.removeDuplicates(this.availableStock, 'value' ); } removeDuplicates(array, key) {
+        return array.reduce((arr, item)=> {
+        const removed = arr.filter(i => i[key] !== item[key]);
+        return [...removed, item];
+        }, []);
+        };
+
+        openDialog() {
+        this.dialog.open(DialogComponent);
+        }
+
+        buyNow(product) {
+        this.router.navigate([`checkout/product/${product.id}`], {
+        queryParams: {
+        category: product.category,
+        '': product.title
+        }
+        });
+        this.cartService.buyProduct(product);
+        }
+
+
+        ngAfterViewChecked(): void {
+        this.picture = document.querySelector('#pic');
+        this.picture1 = document.querySelector('#pic1');
+        this.picture2 = document.querySelector('#pic2');
+        this.picture3 = document.querySelector('#pic3');
+        this.picture4 = document.querySelector('#pic4');
+        this.picture5 = document.querySelector('#pic5');
+        this.picture6 = document.querySelector('#pic6');
+
+        // main picture
+        this.picture = document.querySelector('#pic');
+
+        this.picList.push([this.picture1, this.picture2, this.picture3, this.picture4, this.picture5,
+        this.picture6]);
+
+        this.mainContainer = document.querySelector('#picture');
+
+        // selector
+        this.rect = document.querySelector("#rect");
+
+        // Zoom window
+        this.zoom = document.querySelector('#zoom');
+
+        // Width and height of main picture in px
+        this.w1 = this.mainContainer.offsetWidth;
+        this.h1 = this.mainContainer.offsetHeight;
+
+        // Zoom window background-image size
+        this.zoom.style.backgroundSize = this.w1 * this.ratio + 'px ' + this.h1 * this.ratio + 'px';
+
+        // Width and height of selector
+        this.w2 = this.rect.offsetWidth;
+        this.h2 = this.rect.offsetHeight;
+
+        // half of selector shows outside the main picture
+        // We need half of width and height
+
+        // zoom window width and height
+        // this.zoom.style.width = this.w2 * this.ratio + 'px';
+        this.zoom.style.height = this.h2 * this.ratio + 'px';
+        this.w2 = this.w2 / 2;
+        this.h2 = this.h2 / 2;
+        }
+
+        changeImage(imgSrc, n) {
+        // This will change the main image
+        this.picture.src = imgSrc;
+        // this.picture.style.transition = 5 + "s";
+        // This will change the background image of the zoom window
+        this.zoom.style.backgroundImage = "url(" + imgSrc + ")";
+        // removing box shodow from the previous active side picture
+        // this.picList[this.picActive - 1].style.border = "none";
+        // Add box shodow to active side picture
+        // this.picList[n - 1].classList.style.border = 1 + "px" + "solid";
+
+        // update the active side picture
+        this.picActive = n;
+        }
+
+        // moving the selector box
+        move(ev) {
+        // How far is the mouse cursor from an element
+        // x how far the cursor from left of element
+        this.x = ev.offsetX;
+        // y how far the cursor from the top of an element
+        this.y = ev.offsetY;
+
+        this.xx = this.x - this.w2;
+        this.yy = this.y - this.h2;
+
+
+        // Keeping the selector inside the main picture
+        // left of picture
+        if (this.x < this.w2) { this.x=this.w2; // matching the zoom window with the selector this.xx=0; } // right of
+                main picture if (this.x> this.w1 - this.w2) {
+                this.x = this.w1 - this.w2;
+                this.xx = this.x - this.w2;
+                }
+
+                // top of main picture
+                if (this.y < this.h2) { this.y=this.h2; this.yy=0; } // bottom of main picture if (this.y>
+                        this.h1 - this.h2) {
+                        this.y = this.h1 - this.h2;
+                        }
+
+                        this.xx = this.xx * this.ratio;
+                        this.yy = this.yy * this.ratio;
+
+                        // changing the position of the selector
+                        this.rect.style.left = this.x + 'px';
+                        this.rect.style.top = this.y + 'px';
+
+                        // changing background image of zoom window
+                        this.zoom.style.backgroundPosition = '-' + this.xx + 'px ' + '-' + this.yy + 'px';
+                        }
+
+                        // show selector
+                        // show zoom window
+                        addOpacity() {
+                        this.zoom.style.opacity = 1;
+                        this.zoom.style.backgroundImage = "url(" + this.picture.src + ")";
+                        this.rect.style.backgroundImage = 'url("assets/image-magnifire.gif")';
+                        this.rect.style.opacity = 1;
+                        }
+
+                        // Hide the zoom window
+                        removeOpacity() {
+                        this.rect.style.backgroundImage = "none";
+                        this.zoom.style.opacity = 0;
+                        }
+
+                        showingZoomImg(ev) {
+                        this.move(ev);
+                        this.addOpacity();
+                        }
+
+                        @HostListener('mouseout', ['$event']) onmouseout() {
+                        this.removeOpacity();
+                        }
+
+                        getSelectedColorProduct(color) {
+                        this.selectedColor = color;
+                        this.product.variants.forEach(el => {
+                        if (color.color === el.color) {
+                        console.log(this.product);
+                        this.productImages = el.src;
+                        this.defaultImage = this.productImages[0]
+                        }
+                        })
+                        }
+
+
+
+                        }
+
+                        ////////////////////////////////////////////////////////////////////// /////////////////////
+
+                        .view-product {
+                        display: grid;
+                        grid-template-columns: 5% 45% 50%;
+                        position: relative;
+
+                        ///////////////////////
+
+                        .container {
+                        padding: 15px;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        }
+
+                        .container div {
+                        margin: 10px;
+                        }
+
+                        // .pictures {
+                        // // width: 64px;
+                        // }
+
+                        .pictures img {
+                        margin-bottom: 3px;
+                        cursor: pointer;
+                        }
+
+                        .picture {
+                        position: relative;
+                        padding: 0 20px;
+                        width: 525px;
+                        height: 525px;
+                        }
+
+                        img {
+                        width: 100%;
+                        transition: 0.1s;
+                        }
+
+                        .rect-active {
+                        opacity: 1;
+                        }
+
+                        .rect {
+                        position: absolute;
+                        margin: 20px !important;
+                        padding: 0;
+                        width: 200px;
+                        height: 150px;
+                        transform: translate(-50%, -50%);
+                        pointer-events: none;
+                        opacity: 0;
+                        }
+
+                        .zoom {
+                        position: relative;
+                        // top: 0;
+                        // left: 20px;
+                        // opacity: 1;
+                        z-index: 0;
+                        top: -468px;
+                        pointer-events: none;
+                        border: 1px solid rgba(128, 128, 128, 0.123);
+                        }
+                        ////////////////////////
+
+                        .product-image {
+                        display: flex;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        button {
+                        background-color: inherit;
+                        .mat-icon {
+                        height: 30px;
+                        width: 30px;
+                        }
+                        .material-icons {
+                        font-size: 30px;
+                        line-height: 0.9;
+                        }
+                        }
+                        }
+                        .view-cart {
+                        &__title {
+                        display: block;
+                        text-transform: capitalize;
+                        }
+
+                        &__price {
+                        display: block;
+                        // color: #e32b2b;
+                        font-weight: 700;
+                        font-size: 22px;
+                        margin: 10px 0;
+                        }
+
+                        form {
+                        .view-product-size-section {
+                        &__size,
+                        &__size-guidance {
+                        display: block;
+                        font-weight: 700;
+                        margin: 10px 0;
+                        }
+
+                        &__size-box {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+                        border-left: 1px solid #e0e0e0;
+                        margin-bottom: 2px;
+
+                        .mat-radio-button {
+                        border: 1px solid #e0e0e0;
+                        border-left: none;
+                        margin-bottom: -1px;
+                        cursor: pointer;
+                        transition: all 0.2s;
+                        &:hover {
+                        transition: all 0.2s;
+                        background-color: black;
+                        color: white;
+                        }
+                        }
+                        }
+
+                        &__size-guidance {
+                        display: inline-flex;
+                        cursor: pointer;
+                        // margin-top: 15px;
+                        &:hover {
+                        background-color: black;
+                        color: white;
+                        }
+                        p {
+                        margin: 0;
+                        text-decoration: underline;
+                        }
+                        }
+                        }
+
+                        .view-product-qty-section {
+                        margin: -11px 0;
+                        &__quantity {
+                        display: block;
+                        font-weight: 700;
+                        margin: 10px 0;
+                        }
+                        .alert {
+                        display: block;
+                        font-weight: bolder;
+                        color: #e91e63;
+                        }
+                        ::ng-deep {
+                        .mat-form-field-wrapper {
+                        padding-bottom: 0;
+                        }
+                        }
+                        }
+
+                        .view-product-colors-section {
+                        &__color {
+                        display: block;
+                        font-weight: 700;
+                        margin: 20px 0;
+                        }
+                        &__color-box {
+                        background-color: transparent;
+                        display: flex;
+                        column-gap: 4px;
+                        ::ng-deep {
+                        .mat-radio-label-content {
+                        padding-left: 0;
+                        }
+                        }
+                        img {
+                        width: 50px;
+                        }
+                        }
+                        }
+
+                        .invalid-tooltip {
+                        position: absolute;
+                        max-width: 100%;
+                        padding: 0.25rem 0.5rem;
+                        margin-top: 0.1rem;
+                        font-size: 0.875rem;
+                        color: #fff;
+                        background-color: #f44336;
+                        border-radius: 0.25rem;
+                        }
+                        button {
+                        margin: 5px 0;
+                        padding: 6px 16px;
+                        }
+                        }
+                        }
+
+                        ::ng-deep {
+                        .mat-radio-container {
+                        display: none;
+                        }
+                        .mat-radio-checked {
+                        background-color: black;
+                        color: #fff;
+                        }
+                        .mat-radio-label {
+                        display: block;
+                        align-items: center;
+                        white-space: nowrap;
+                        width: auto;
+                        }
+                        .mat-radio-label-content {
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        }
+                        .mat-form-field {
+                        margin: 0;
+                        }
+                        }
+                        }
+
+                        ::ng-deep {
+                        .mat-snack-bar-container {
+                        width: 300px;
+                        text-transform: capitalize;
+                        }
+                        .mat-snack-bar-container {
+                        background: #1c2a2e;
+                        }
+                        }
+
+                        .gallery-wrapper {
+                        text-align: center;
+                        margin-top: 50px;
+                        .ngx-gallery {
+                        display: inline-block;
+                        margin-bottom: 20px;
+                        /* width: 500px;
+                        height: 400px;
+                        border-color: #4a89ff;*/
+                        }
+                        }
+
+
+
+                        <!-- view.comp.ts file -->
+                        // old
+                        import { Component, OnInit } from '@angular/core';
+                        import { MatDialog } from '@angular/material/dialog';
+                        import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+                        import { map } from "rxjs/operators";
+
+                        import { DialogComponent } from 'src/app/components/dialog/dialog.component';
+                        import { sizeAndQtyModel } from 'src/app/models/cart.model';
+                        import { CartService } from 'src/app/services/cart.service';
+                        import { ProductsService } from 'src/app/services/products.service';
+
+
+                        @Component({
+                        selector: 'app-view-product',
+                        templateUrl: './view-product.component.html',
+                        styleUrls: ['./view-product.component.scss']
+                        })
+
+                        export class ViewProductComponent implements OnInit {
+                        product;
+                        availableStock = [];
+                        availableColors = [];
+                        availableSizes = [];
+                        availableQuantities = [];
+                        itemsInCart: number = 0;
+                        id;
+                        alertSize: number;
+                        alertQty: number;
+                        disabled: boolean = false;
+
+                        onEnterColor;
+                        selectedColor: string;
+
+                        productImages;
+                        productImages1: string = "";
+                        productImages2: string = "";
+                        productImages3: string = "";
+                        productImages4: string = "";
+                        productImages5: string = "";
+
+                        constructor(
+                        private cartService: CartService,
+                        private productService: ProductsService,
+                        private activatedRoute: ActivatedRoute,
+                        public dialog: MatDialog,
+                        private router: Router
+                        ) { }
+
+                        model: sizeAndQtyModel = {
+                        selectedQty: null,
+                        selectedSize: null,
+                        };
+
+                        ngOnInit(): void {
+                        this.activatedRoute.paramMap.pipe(
+                        map((param: ParamMap) => {
+                        // @ts-ignore
+                        return param.params.id;
+                        })
+                        ).subscribe(prodId => {
+                        this.id = prodId;
+                        this.productService.getSingleProduct(this.id).subscribe((prod: any) => {
+                        console.log(prod);
+
+                        // COLORS
+                        prod.variants.forEach(color => {
+                        // console.log(color);
+                        this.availableColors.push(color)
+                        })
+
+                        prod.variants.forEach(el => {
+                        // console.log(el);
+
+                        // el.otherImages.forEach((ele, i) => {
+                        // this.productImages1 = ele
+                        // this.productImages2 = ele
+                        // this.productImages3 = ele
+                        // this.productImages4 = ele
+                        // this.productImages5 = ele
+
+                        // });
+                        })
+                        // console.log(this.productImages);
+
+
+                        let filterArr = prod.variants.filter((el, pos) => {
+                        return prod.variants.indexOf(el) == pos;
+                        })
+
+                        filterArr = this.removeDuplicates(filterArr, '');
+
+                        filterArr[0].sizeAndqty.forEach(el => {
+                        this.availableSizes.push(el.forSize);
+                        this.availableQuantities.push(el.availableQty);
+                        })
+                        this.product = prod;
+                        })
+                        })
+                        }
+
+                        onSelectedQty() {
+                        return [
+                        this.model.selectedQty,
+                        this.model.selectedSize
+                        ]
+                        }
+
+                        // ADD TO CART
+                        addItemToCart(product) {
+                        let selectedQtySizeArr = this.onSelectedQty();
+                        let selectedQtySizeObj = { selectedQty: selectedQtySizeArr[0], selectedSize:
+                        selectedQtySizeArr[1] };
+                        product.selectedSize = selectedQtySizeArr[1];
+                        this.cartService.addtoCart(product, selectedQtySizeObj);
+                        }
+
+                        getSize(size, index) {
+                        this.alertSize = size;
+                        this.availableQuantities.forEach((el, i) => {
+                        if (index === i) {
+                        this.availableStock = []
+                        for (let j = 1; j < el + 1; j++) { this.alertQty=el; this.availableStock.push({ value: j,
+                                viewValue: j }); } } });
+                                this.availableStock=this.removeDuplicates(this.availableStock, 'value' ); }
+                                removeDuplicates(array, key) { return array.reduce((arr, item)=> {
+                                const removed = arr.filter(i => i[key] !== item[key]);
+                                return [...removed, item];
+                                }, []);
+                                };
+
+                                openDialog() {
+                                this.dialog.open(DialogComponent);
+                                }
+
+                                buyNow(product) {
+                                this.router.navigate([`checkout/product/${product.id}`], {
+                                queryParams: {
+                                category: product.category,
+                                '': product.title
+                                }
+                                });
+                                this.cartService.buyProduct(product);
+                                }
+
+
+                                receiveMessage($event) {
+                                this.product = $event;
+                                }
+
+                                changeImage(imgSrc, n) { }
+
+                                getSelectedColorProduct(color) {
+                                // console.log(color);
+                                this.selectedColor = color;
+                                // this.product.variants.forEach(el => {
+                                // if (color.color === el.color) {
+                                // this.productImages = el.src;
+                                // // this.defaultImage = this.productImages[0]
+                                // }
+                                // })
+                                }
+
+
+
+                                }

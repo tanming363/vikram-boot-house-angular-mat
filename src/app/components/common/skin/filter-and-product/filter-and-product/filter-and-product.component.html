@@ -1,0 +1,51 @@
+<div class="container">
+            <div class="content">
+                        <mat-sidenav-container *ngIf="!errorBlock">
+                                    <mat-sidenav class="filter-container" #sidenav
+                                                [opened]="mobileQuery.matches ? 'false' : 'true'"
+                                                [mode]="mobileQuery.matches ? 'over' : 'side'">
+                                                <div class="filters" #filters
+                                                            [ngStyle]="{'height': 'calc(100% - ' + minusPixels + 'px)'}">
+                                                            <button class="sidebar-close-btn" (click)="sidenav.toggle()"
+                                                                        mat-icon-button>
+                                                                        <mat-icon>close</mat-icon>
+                                                            </button>
+                                                            <app-filter [products]="mensproducts$" [sizes]="size"
+                                                                        [colors]="color"
+                                                                        (sizeFilterBy)="sizeFilter($event)"
+                                                                        (colorFilterBy)="colorFilter($event)"
+                                                                        (priceFilterBy)="priceFilter($event)"
+                                                                        (sortedBy)="sortedBy($event)">
+                                                            </app-filter>
+                                                </div>
+                                    </mat-sidenav>
+                                    <mat-sidenav-content>
+                                                <div class="filter-header">
+                                                            <div style="visibility: hidden;">MEN</div>
+                                                            <button class="toggle-btn" mat-button
+                                                                        (click)="sidenav.toggle()"
+                                                                        *ngIf="!mobileQuery.matches">
+                                                                        <mat-icon>tune</mat-icon>
+                                                                        {{sidenav.opened ? "Hide" : "Show"}} filter
+                                                            </button>
+                                                            <button class="toggle-btn" mat-icon-button
+                                                                        (click)="sidenav.toggle()"
+                                                                        *ngIf="mobileQuery.matches">
+                                                                        <mat-icon>tune</mat-icon>
+                                                            </button>
+                                                </div>
+                                                <div class="product">
+                                                            <app-products *ngFor="let mensproduct of mensproducts$ | async | sizeFilter:filterSize | colorFilter:filterColor |
+                                         priceFilter:filterPrice | sort:['price',sortDirection]"
+                                                                        [product]="mensproduct">
+                                                            </app-products>
+                                                </div>
+                                    </mat-sidenav-content>
+                        </mat-sidenav-container>
+                        <div *ngIf="errorBlock">
+                                    <div class="error">
+                                                <app-error-page></app-error-page>
+                                    </div>
+                        </div>
+            </div>
+</div>

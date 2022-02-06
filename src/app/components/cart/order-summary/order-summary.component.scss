@@ -1,0 +1,32 @@
+.total-payment-card {
+  height: 100%;
+  .cart-heading {
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  div span {
+    font-size: 14px;
+    margin-bottom: 0;
+    padding: 2px 0px;
+  }
+  .mat-divider {
+    margin: 10px 0;
+  }
+  h2 {
+    margin: 15px 0;
+  }
+  .spacer {
+    margin-bottom: 39px;
+  }
+  button {
+    padding: 6px 16px;
+  }
+  .final-total {
+    h2 {
+      font-weight: 600;
+      font-size: 18px;
+      color: black;
+    }
+  }
+}

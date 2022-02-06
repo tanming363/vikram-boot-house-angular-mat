@@ -1,0 +1,262 @@
+.navbar {
+  .toolbar-div {
+    margin-bottom: -1px;
+    .mat-toolbar {
+      top: 0;
+      left: 0;
+      right: 0;
+      box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+      .top-header {
+        background-color: #cdac78;
+        height: 30px;
+        .callus {
+          display: flex;
+          align-items: center;
+          column-gap: 2px;
+          .phone-icon {
+            font-size: 14px;
+            width: 14px;
+            height: 14px;
+          }
+          .phone-number {
+            font-size: 12px;
+          }
+        }
+        .desktop-view-signin-icon {
+          text-decoration: none;
+          color: #000000;
+          font-size: 14px;
+          padding: 0 10px;
+          position: relative;
+          transform: scale(0.9);
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+      @media (max-width: 959px) {
+        .top-header {
+          display: none;
+        }
+      }
+      .main-header {
+        color: black;
+        .logo {
+          outline: none;
+          img {
+            position: relative;
+            top: 4px;
+            width: 230px;
+          }
+        }
+        @media (max-width: 959px) {
+          .logo img {
+            width: 200px;
+            padding-top: 9px;
+          }
+        }
+        .category {
+          display: flex;
+          align-items: center;
+          column-gap: 15px;
+          margin-right: 19px;
+          .nav-link {
+            color: #000000;
+            text-decoration: none;
+            position: relative;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1.87px;
+            font-weight: 700;
+            margin: 0 3px;
+            padding: 0 0 25px 0;
+          }
+          .active {
+            border-bottom: 3px solid black;
+            border-radius: 0;
+          }
+        }
+        .action-buttons {
+          display: flex;
+          align-items: center;
+          column-gap: 10px;
+          .desktop-view-search-icon {
+            display: block;
+            position: relative;
+            top: 9px;
+            .input {
+              font: inherit;
+              font-size: 14px;
+              padding: 5px 10px 5px 46px;
+              border-radius: 30px;
+              border: 0;
+              top: -9px;
+              position: relative;
+              background-color: rgba(0, 0, 0, 0.04);
+              color: inherit;
+              &:focus-visible {
+                outline: none;
+              }
+              &::placeholder {
+                color: #917f61;
+              }
+            }
+          }
+          .mobile-view-search-icon {
+            display: none;
+          }
+          input {
+            font-size: 16px;
+          }
+          @media (max-width: 959px) {
+            .mobile-view-search-icon {
+              display: block;
+            }
+            .desktop-view-search-icon {
+              display: none;
+            }
+          }
+          .mobile-view-signin-icon {
+            display: none;
+          }
+          @media (max-width: 959px) {
+            .mobile-view-signin-icon {
+              display: block;
+            }
+          }
+          ::ng-deep .mat-badge-content {
+            background: #ba7b48;
+            color: #000000;
+          }
+        }
+        @media (max-width: 959px) {
+          .action-buttons {
+            column-gap: 0;
+          }
+        }
+      }
+      @media (min-width: 960px) {
+        .main-header {
+          height: 74px;
+        }
+      }
+    }
+  }
+  // PROGRESS BAR
+  .mat-progress-bar {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+  }
+  .sidenav-container {
+    position: relative;
+    // top: auto;
+    top: 2px;
+    left: 0;
+    right: 0;
+
+    // SIDEBAR
+    .sidebar-drawer {
+      width: 100%;
+      .sidebar-close-btn {
+        position: absolute;
+        right: 0;
+        color: white;
+        margin: 5px;
+      }
+      .user-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #1c2a2e;
+        padding: 35px 15px;
+
+        img {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          flex-shrink: 0;
+          object-fit: cover;
+          border: 2px solid #dbc295;
+        }
+        h2 {
+          align-items: center;
+          margin: 0;
+          line-height: 24px;
+          color: #dbc295;
+          padding-top: 8px;
+          text-align: center;
+        }
+      }
+      .mat-nav-list .mat-list-item {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+
+    // FILTER OR SERACH BAR
+    .search-drawer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      .search-field {
+        display: flex;
+        justify-content: center;
+        column-gap: 10px;
+        padding: 20px;
+        .mat-search-field {
+          width: 100%;
+        }
+      }
+      ::ng-deep {
+        .mat-form-field-outline-start {
+          border-radius: 28px 0 0 28px;
+          min-width: 28px;
+        }
+        .mat-form-field-outline-end {
+          border-radius: 0 28px 28px 0;
+        }
+        .mat-form-field-appearance-outline .mat-form-field-flex {
+          padding: 0 9px 4px 19px;
+        }
+      }
+    }
+    .sidenav .mat-toolbar {
+      background: inherit;
+    }
+    .mat-sidenav-content {
+      .mat-list-base {
+        padding-top: 0;
+      }
+    }
+    ::ng-deep {
+      .mat-drawer {
+        top: 3px;
+      }
+      .mat-drawer-container {
+        background-color: inherit;
+        color: #000000;
+      }
+      .mat-badge-medium.mat-badge-above .mat-badge-content {
+        top: -9px;
+      }
+    }
+  }
+}
+
+.showMainNav {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+.hideTopNav {
+  display: none;
+}
+.flex-view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

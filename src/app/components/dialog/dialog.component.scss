@@ -1,0 +1,13 @@
+.mat-card {
+  box-shadow: none;
+  padding: 0;
+}
+.mat-card-header {
+  justify-content: flex-end;
+}
+::ng-deep {
+  .mat-dialog-container {
+    display: block;
+    padding: 0 24px;
+  }
+}

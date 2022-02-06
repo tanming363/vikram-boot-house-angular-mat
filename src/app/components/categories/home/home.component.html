@@ -1,0 +1,56 @@
+<div class="wrapper" *ngIf="!errorBlock">
+        <owl-carousel-o [options]="carousel" *ngIf="showCarousel">
+                <ng-container *ngFor="let image of carouselImages">
+                        <ng-template class="slide" carouselSlide>
+                                <img [src]="image">
+                        </ng-template>
+                </ng-container>
+        </owl-carousel-o>
+
+        <div class="container">
+                <div class="content">
+                        <!-- category -->
+                        <div class="category-div" *ngIf="showCategory">
+                                <h1 class="looking-for">looking for?</h1>
+                                <div class="category">
+                                        <div *ngFor="let category of categories">
+                                                <a [routerLink]="category.path">
+                                                        <img [src]="category.url">
+                                                        <h1>
+                                                                {{category.category}}
+                                                                <span class="material-icons-sharp arrow-icon">
+                                                                        trending_flat
+                                                                </span>
+                                                        </h1>
+                                                </a>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- recommended -->
+                        <div class="recommended-div">
+                                <section>
+                                        <h1 class="recommended">recommended</h1>
+                                        <h4 class="see-more-product">
+                                                <a routerLink="/men">See more products</a>
+                                        </h4>
+                                </section>
+                                <owl-carousel-o [options]="customOptions">
+                                        <ng-container *ngFor="let mensproduct of mensproducts$ | async">
+                                                <ng-template class="slide" carouselSlide>
+                                                        <div class="product">
+                                                                <app-products [product]="mensproduct">
+                                                                </app-products>
+                                                        </div>
+                                                </ng-template>
+                                        </ng-container>
+                                </owl-carousel-o>
+                        </div>
+                </div>
+        </div>
+</div>
+
+<div *ngIf="errorBlock">
+        <div class="error">
+                <app-error-page></app-error-page>
+        </div>
+</div>

@@ -1,0 +1,28 @@
+{
+            "Images": [
+                        {
+                                    "carouselImg": [
+                                                "https://vikramboothouse.netlify.app/image/1.jpg",
+                                                "https://vikramboothouse.netlify.app/image/2.jpg",
+                                                "https://vikramboothouse.netlify.app/image/3.jpg"
+                                    ],
+                                    "category": [
+                                                {
+                                                            "path": "/men",
+                                                            "url": "assets/img/men.jpg",
+                                                            "category": "men"
+                                                },
+                                                {
+                                                            "path": "/women",
+                                                            "url": "assets/img/girl.jpg",
+                                                            "category": "women"
+                                                },
+                                                {
+                                                            "path": "/kids",
+                                                            "url": "assets/img/kid.jpg",
+                                                            "category": "kids"
+                                                }
+                                    ]
+                        }
+            ]
+}

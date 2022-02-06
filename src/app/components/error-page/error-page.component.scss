@@ -1,0 +1,69 @@
+.error-img {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  img {
+    width: 70%;
+  }
+
+  .button-pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .button-edge {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    background: #f39b91;
+  }
+
+  .button-front {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 28px;
+    font-size: 1.1rem;
+    color: #fdfaf8;
+    background: #ffc7ba;
+    will-change: transform;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+    .btn {
+      color: #fdfaf8;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .button-front {
+      font-size: 1.25rem;
+      padding: 12px 42px;
+    }
+  }
+
+  .button-pushable:hover .button-front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+
+  .button-pushable:active .button-front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+  .button-pushable:focus:not(:focus-visible) {
+    outline: none;
+  }
+}

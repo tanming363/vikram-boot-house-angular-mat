@@ -1,0 +1,25 @@
+.checkout-stepper {
+  mat-card {
+    margin-top: 20px;
+  }
+  ::ng-deep {
+    .mat-horizontal-stepper-header-container {
+      margin-bottom: 20px;
+    }
+    .mat-step-header .mat-step-label.mat-step-label-active {
+      font-weight: 700;
+    }
+  }
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+
+  .mat-form-field {
+    line-height: inherit;
+    width: 100%;
+  }
+
+  .app-order-summary {
+    height: 280px;
+  }
+}

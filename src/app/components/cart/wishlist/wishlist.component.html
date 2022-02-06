@@ -1,0 +1,114 @@
+<div class="container">
+            <div class="content">
+                        <div class="whishlist">
+                                    <div class="whishlist-title">
+                                                <h1>My Wishlist</h1>
+                                    </div>
+                                    <div class="product">
+                                                <div *ngFor="let product of itemsInWishList$ | async">
+                                                            <div class="product__info" (click)="goToProduct(product)">
+                                                                        <div class="product__image grid"
+                                                                                    (click)="selectedColor(product)">
+                                                                                    <div *ngIf="!show"
+                                                                                                class="skeleton-background  skeleton-product-image">
+                                                                                    </div>
+                                                                                    <div class="discount-favorite">
+                                                                                                <div
+                                                                                                            class="discount-favorite__grid-view">
+                                                                                                            <div *ngIf="show && product.discount !== null"
+                                                                                                                        class="product__discount">
+                                                                                                                        <span>{{product.discount/100
+                                                                                                                                    |
+                                                                                                                                    percent}}</span>
+                                                                                                                        <span>off</span>
+                                                                                                            </div>
+                                                                                                            <div *ngIf="show && product.discount === null"
+                                                                                                                        class="product__discount"
+                                                                                                                        style="visibility: hidden;">
+                                                                                                            </div>
+                                                                                                </div>
+                                                                                    </div>
+                                                                                    <!-- TOP IMAGE -->
+                                                                                    <img *ngIf="show"
+                                                                                                [src]="product.firstImage">
+                                                                        </div>
+                                                                        <div>
+                                                                                    <div class="product__details">
+                                                                                                <span *ngIf="show"
+                                                                                                            class="product__brand-name"
+                                                                                                            (click)="selectProduct(product)">{{product.title}}</span>
+                                                                                                <span *ngIf="!show"
+                                                                                                            class="skeleton-background  skeleton-product-brand-name"></span>
+
+                                                                                                <span *ngIf="show"
+                                                                                                            class="product__brand-category">{{product.category}}
+                                                                                                            shoes</span>
+                                                                                                <span *ngIf="!show"
+                                                                                                            class="skeleton-background  skeleton-product-category"></span>
+
+                                                                                                <span class="product__brand-colors"
+                                                                                                            *ngIf="show">
+                                                                                                            {{product.numOfColor}}
+                                                                                                            {{product.numOfColor
+                                                                                                            ===
+                                                                                                            1 ?
+                                                                                                            "Color":"Color's"}}
+                                                                                                            available
+                                                                                                </span>
+                                                                                                <span *ngIf="!show"
+                                                                                                            class="skeleton-background  skeleton-product-brand-colors"></span>
+                                                                                                <span *ngIf="show"
+                                                                                                            class="product__brand-price">
+                                                                                                            <span
+                                                                                                                        *ngIf="product.discount === null">
+                                                                                                                        {{product.price
+                                                                                                                        |
+                                                                                                                        currency}}
+                                                                                                            </span>
+                                                                                                            <small *ngIf="product.discount !== null"
+                                                                                                                        class="before-discount">
+                                                                                                                        {{product.price
+                                                                                                                        |
+                                                                                                                        currency}}
+                                                                                                            </small>
+                                                                                                            <span *ngIf="product.discount !== null"
+                                                                                                                        [ngClass]="{'after-discount': true}">
+                                                                                                                        {{product.price
+                                                                                                                        -
+                                                                                                                        product.discount
+                                                                                                                        /
+                                                                                                                        100
+                                                                                                                        *
+                                                                                                                        product.price
+                                                                                                                        |
+                                                                                                                        currency}}
+                                                                                                            </span>
+                                                                                                </span>
+                                                                                                <span *ngIf="!show"
+                                                                                                            class="skeleton-background  skeleton-product-price"></span>
+                                                                                    </div>
+                                                                        </div>
+                                                                        <div class="remove-addToCart">
+                                                                                    <button mat-stroked-button
+                                                                                                (click)="remove(product)">
+                                                                                                Remove
+                                                                                    </button>
+                                                                        </div>
+                                                                        <br>
+                                                            </div>
+                                                </div>
+                                    </div>
+
+                                    <div class="empty-wishlist" *ngIf="!(itemsInWishList$ | async)?.length">
+                                                <span class="material-icons-outlined">
+                                                            shopping_cart
+                                                </span>
+                                                <h1 class="no-product">There are no products in your
+                                                            wishlist yet</h1>
+                                                <button mat-stroked-button (click)="onContinueShopping()">
+                                                            Continue Shopping
+                                                </button>
+                                    </div>
+                        </div>
+            </div>
+</div>

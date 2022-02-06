@@ -1,0 +1,164 @@
+<div class="container">
+        <div class="content">
+                <div class="view-product">
+                        <div class="view-product-grid-box" gdColumns="57% 40%" gdColumns.xs="1fr" gdColumns.sm="1fr">
+                                <div class="products-Images-slider box-1">
+                                        <section class="product-page">
+                                                <div class="thumbnails">
+                                                        <div class="thumb active">
+                                                                <a [href]="productImages1">
+                                                                        <img [src]="productImages1">
+                                                                </a>
+                                                        </div>
+                                                        <div class="thumb">
+                                                                <a [href]="productImages2">
+                                                                        <img [src]="productImages2">
+                                                                </a>
+                                                        </div>
+                                                        <div class="thumb">
+                                                                <a [href]="productImages3">
+                                                                        <img [src]="productImages3">
+                                                                </a>
+                                                        </div>
+                                                        <div class="thumb">
+                                                                <a [href]="productImages4">
+                                                                        <img [src]="productImages4">
+                                                                </a>
+                                                        </div>
+                                                        <div class="thumb">
+                                                                <a [href]="productImages5">
+                                                                        <img [src]="productImages5">
+                                                                </a>
+                                                        </div>
+                                                </div>
+                                                <div class="img-display">
+                                                        <span class="zoom">
+                                                                <img [src]="productImages1">
+                                                        </span>
+                                                </div>
+                                        </section>
+                                        <img class="mobile-version-image" [src]="productImages1">
+                                </div>
+                                <div class="price-title-div box-2" *ngIf="product">
+                                        <h1 class="price-title-div__title"><i>{{product.title}}</i></h1>
+                                        <span *ngIf="product.discount"
+                                                class="price-title-div__discount">{{product.discount/100 |
+                                                percent}} off</span>
+
+                                        <div class="price-title-div__price-div">
+                                                <span
+                                                        [ngClass]="product.discount ? 'price-title-div__price' : 'price-title-div__price-no-discount'">
+                                                        {{product.price | currency:'INR'}}
+                                                </span>
+                                                <span *ngIf="product.discount"
+                                                        class="price-title-div__price-after-discount">
+                                                        {{product.price - product.discount / 100 *
+                                                        product.price | currency:'INR'}}
+                                                </span>
+                                        </div>
+                                </div>
+                                <div class="size-qty-btn-div box-3 " *ngIf="product">
+                                        <form #f="ngForm" (ngSubmit)="f.form.valid && onSelectedQty()">
+                                                <section class="view-product-size-section">
+                                                        <span class="view-product-size-section__size">Choose Size</span>
+                                                        <mat-radio-group class="view-product-size-section__size-box"
+                                                                name="selectedSize" [(ngModel)]="model.selectedSize"
+                                                                #selectedSize="ngModel"
+                                                                [ngClass]="{'invalid-data': selectedSize.invalid && f.submitted, 'valid-data': selectedSize.valid && f.submitted}"
+                                                                required>
+                                                                <mat-radio-button [value]="size"
+                                                                        *ngFor="let size of availableSizesAndQty;index as i"
+                                                                        (click)="getSize(size,i)">
+                                                                        {{size.forSize}}
+                                                                </mat-radio-button>
+                                                        </mat-radio-group>
+                                                        <a class="view-product-size-section__size-guidance"
+                                                                (click)="openDialog()">
+                                                                <span class="material-icons-outlined">
+                                                                        straighten
+                                                                </span> &nbsp;
+                                                                <p> Size guidance </p>
+                                                        </a>
+                                                </section>
+
+                                                <section class="view-product-qty-section">
+                                                        <span class="view-product-qty-section__quantity">Choose
+                                                                Quantity</span>
+                                                        <mat-form-field appearance="outline">
+                                                                <mat-label>Quantity</mat-label>
+                                                                <mat-select name="selectedQty"
+                                                                        [(ngModel)]="model.selectedQty"
+                                                                        #selectedQty="ngModel"
+                                                                        [ngClass]="{'invalid-data': selectedQty.invalid && f.submitted, 'valid-data': selectedQty.valid && f.submitted}"
+                                                                        required>
+                                                                        <mat-option
+                                                                                *ngFor="let product of availableStock"
+                                                                                [value]="product.value">
+                                                                                {{product.viewValue}}
+                                                                        </mat-option>
+                                                                </mat-select>
+                                                        </mat-form-field>
+                                                        <small class="alert" *ngIf="selectedSize.valid">
+                                                                <div *ngIf="alertQty!==0">
+                                                                        Don't miss it. Last
+                                                                        {{alertQty}} {{alertQty > 1 ? 'are': 'is' }}
+                                                                        available.
+                                                                </div>
+                                                                <div *ngIf="alertQty===0">
+                                                                        That was the last pair available which you added
+                                                                        to your
+                                                                        cart.
+                                                                        Now this
+                                                                        product is not available.
+                                                                </div>
+                                                        </small>
+                                                </section>
+                                                <section class="view-product-colors-section">
+                                                        <span class="view-product-colors-section__color">
+                                                                Choose Color</span>
+                                                        <mat-radio-group class="view-product-colors-section__color-box"
+                                                                name="selectedColor" [(ngModel)]="selectedColor">
+                                                                <mat-radio-button *ngFor="let item of availableColors"
+                                                                        (change)="getSelectedColorProduct(item)"
+                                                                        [value]="item">
+                                                                        <img *ngIf="product.articleNo===item.articleNo"
+                                                                                width="50" [src]="item.firstImage"
+                                                                                [alt]="item.firstImage">
+                                                                </mat-radio-button>
+                                                        </mat-radio-group>
+                                                </section>
+                                                <br>
+                                                <button class="btn-default" type="submit" mat-raised-button
+                                                        (click)="addItemToCart(product)"
+                                                        [disabled]="!f.form.valid || disabled">
+                                                        <div>
+                                                                <span>Add to Cart</span>
+                                                                <mat-icon class="material-icons-outlined shopping-bag">
+                                                                        shopping_bag
+                                                                </mat-icon>
+                                                        </div>
+                                                </button>
+                                                <button class="btn-primary" color="primary" mat-flat-button
+                                                        (click)="buyNow(product)">
+                                                        Buy Now
+                                                </button>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
+                <br>
+                <br>
+                <ng-container>
+                        <mat-tab-group mat-align-tabs="center">
+                                <mat-tab label="First">Content 1</mat-tab>
+                                <mat-tab label="Second">Content 2</mat-tab>
+                                <mat-tab label="Third">Content 3</mat-tab>
+                        </mat-tab-group>
+                </ng-container>
+        </div>
+</div>
+<!-- <span class="view-product__category">{{product.category}}</span> -->
+<!-- <span class="view-product__description">{{product.description}}</span> -->
+<!-- <span class="view-product__colors" *ngFor="let color of availableColors">
+   {{color}}
+  </span> -->

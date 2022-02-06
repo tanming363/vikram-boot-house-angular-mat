@@ -1,0 +1,86 @@
+<div class="filter">
+            <div class="filter-gender-items">
+                        <div style="display: flex; font-size: 22px;padding: 16px 2px;">
+                                    <span class="gender">MEN'S </span>
+                                    <span class="items">({{allMensProd.length}})</span>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div class="size-sort-color-price" style="max-height: 100vh;overflow-y: auto;">
+                                    <div>
+                                                <mat-accordion>
+                                                            <mat-expansion-panel [expanded]="true">
+                                                                        <mat-expansion-panel-header>
+                                                                                    <mat-panel-title>
+                                                                                                <span class="filter-by">
+                                                                                                            filter by
+                                                                                                </span>
+                                                                                    </mat-panel-title>
+                                                                        </mat-expansion-panel-header>
+
+                                                                        <div class="filter-size">
+                                                                                    <span class="size">size</span>
+                                                                                    <div class="filter-size-grid">
+                                                                                                <div class="filter-size-flex"
+                                                                                                            *ngFor="let size of allSize">
+                                                                                                            <mat-checkbox
+                                                                                                                        (change)="sizeFilter($event)"
+                                                                                                                        [value]="size">
+                                                                                                                        {{size}}
+                                                                                                            </mat-checkbox>
+                                                                                                </div>
+                                                                                    </div>
+                                                                        </div>
+                                                                        <mat-divider></mat-divider>
+                                                                        <div class="filter-color"
+                                                                                    style="margin: 15px 0">
+                                                                                    <span class="color"> color </span>
+                                                                                    <div class="filter-color-grid">
+                                                                                                <div class="filter-color-flex"
+                                                                                                            *ngFor="let color of allColor"
+                                                                                                            [ngStyle]="{ background: color }">
+                                                                                                            <mat-checkbox
+                                                                                                                        (change)="colorFilter($event)"
+                                                                                                                        [value]="color">
+                                                                                                            </mat-checkbox>
+                                                                                                </div>
+                                                                                    </div>
+                                                                        </div>
+                                                                        <mat-divider></mat-divider>
+                                                                        <div class="filter-price"
+                                                                                    style="margin-top: 15px">
+                                                                                    <span class="price"> price </span>
+                                                                                    <section style="margin: 15px 0">
+                                                                                    </section>
+                                                                        </div>
+                                                            </mat-expansion-panel>
+                                                </mat-accordion>
+                                    </div>
+                                    <mat-divider></mat-divider>
+                                    <div class="sort">
+                                                <mat-accordion>
+                                                            <mat-expansion-panel [expanded]="true">
+                                                                        <mat-expansion-panel-header>
+                                                                                    <mat-panel-title>
+                                                                                                <span class="sort-by">
+                                                                                                            sort by
+                                                                                                </span>
+                                                                                    </mat-panel-title>
+                                                                        </mat-expansion-panel-header>
+                                                                        <mat-radio-group (change)="sorting($event)">
+                                                                                    <mat-radio-button
+                                                                                                class="sort-checkbox"
+                                                                                                *ngFor="let sort of sortBy"
+                                                                                                [value]="sort.value">
+                                                                                                {{ sort.title }}
+                                                                                    </mat-radio-button>
+                                                                        </mat-radio-group>
+                                                            </mat-expansion-panel>
+                                                </mat-accordion>
+                                    </div>
+                                    <mat-divider></mat-divider>
+                                    <br />
+                                    <br />
+                                    <br />
+                        </div>
+            </div>
+</div>

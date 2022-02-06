@@ -1,0 +1,70 @@
+<div *ngIf="product && show">
+        <div class="product__info">
+                <div class="product__image grid" (click)="selectProduct(product)">
+                        <div class="discount-favorite">
+                                <div class="discount-favorite__grid-view">
+                                        <div *ngIf="show && product.discount !== null" class="product__discount">
+                                                <span>{{product.discount/100 | percent}}</span>
+                                                <span>off</span>
+                                        </div>
+                                        <div *ngIf="show && product.discount === null" class="product__discount"
+                                                style="visibility: hidden;">
+                                        </div>
+                                        <button class="fav-btn" mat-icon-button
+                                                (click)="wishList($event,product,checked)">
+                                                <mat-checkbox>
+                                                        <mat-icon class="material-icons-outlined fav-icon">
+                                                                <span *ngIf="!checked">favorite_border</span>
+                                                                <span *ngIf="checked">favorite</span>
+                                                        </mat-icon>
+                                                </mat-checkbox>
+                                        </button>
+                                </div>
+                        </div>
+                        <!-- TOP IMAGE -->
+                        <img [src]="product.firstImage">
+                </div>
+                <div>
+                        <!-- BOTTOM IMAGES -->
+                        <div class="product__brand-colors-images">
+                                <div *ngFor="let color of colors$ | async"
+                                        [ngClass]="(color.color === product.color) ? 'currentProdCurrentImg':''">
+                                        <div class="product__variety-of-colors"
+                                                *ngIf="color.articleNo===product.articleNo && show">
+                                                <a (click)="selectedColor(color)">
+                                                        <img [src]="color.firstImage">
+                                                </a>
+                                        </div>
+                                        <div class="skeleton-background  skeleton-product-variety-of-colors"
+                                                *ngIf="!show">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="product__details">
+                                <span class="product__brand-name"
+                                        (click)="selectProduct(product)">{{product.title}}</span>
+                                <span class="product__brand-category">{{product.category}} shoes</span>
+                                <span class="product__brand-colors" *ngIf="show">
+                                        {{product.numOfColor}} {{product.numOfColor === 1 ? "Color":"Color's"}}
+                                        available
+                                </span>
+                                <span class="product__brand-price">
+                                        <span *ngIf="product.discount === null">
+                                                {{product.price | currency}}
+                                        </span>
+                                        <small *ngIf="product.discount !== null" class="before-discount">
+                                                {{product.price | currency}}
+                                        </small>
+                                        <span *ngIf="product.discount !== null" [ngClass]="{'after-discount': true}">
+                                                {{product.price - product.discount / 100 * product.price |
+                                                currency}}
+                                        </span>
+                                </span>
+                        </div>
+                </div>
+        </div>
+</div>
+
+<!-- SKELETON -->
+<app-skeleton *ngIf="!show"></app-skeleton>
+<!-- (loaderService.isLoading | async) -->

@@ -16,9 +16,6 @@ export class CartComponent implements OnInit, OnDestroy {
   availableStock!: Stock[];
   finalTotal: number = 0;
   selectedQuantity!: null;
-  numOfItemInCart: number = 0;
-  totalArr!: number[];
-  total!: number;
   subscription!: Subscription;
 
   constructor(
@@ -30,6 +27,9 @@ export class CartComponent implements OnInit, OnDestroy {
     selectedQty: null,
     selectedSize: null,
   };
+
+  total$ = this.cartService.cartTotal$;
+  numOfProd$ = this.cartService.numOfProdInCart$;
 
   ngOnInit(): void {
     this.getProduct();
@@ -45,23 +45,23 @@ export class CartComponent implements OnInit, OnDestroy {
   getProduct(): void {
     this.subscription = this.cartService.getProducts().subscribe(product => {
       this.products = product;
-      this.products.forEach(el => {
-        el.product.sizeAndqty.forEach((ele: SizeAndQty) => {
-          if (ele.forSize === el.selectedSizeAndQty.forSize) {
-            this.selectedQuantity = el.selectedSizeAndQty.selectedQty;
-            for (let i = 1; i < ele.availableQty + 1; i++) {
-              this.availableStock.push({
-                value: i,
-                viewValue: i
-              })
-            }
-          }
-          else {
-            this.selectedQuantity = null;
-            this.selectedQuantity = el.selectedSizeAndQty.selectedQty;
-          }
-        })
-      })
+      // this.products.forEach((el) => {
+      //   el.product.sizeAndqty.forEach((ele: SizeAndQty) => {
+      //     if (ele.forSize === el.selectedSizeAndQty.forSize) {
+      //       this.selectedQuantity = el.selectedSizeAndQty.selectedQty;
+      //       for (let i = 1; i < ele.availableQty + 1; i++) {
+      //         this.availableStock.push({
+      //           value: i,
+      //           viewValue: i
+      //         })
+      //       }
+      //     }
+      //     else {
+      //       this.selectedQuantity = null;
+      //       this.selectedQuantity = el.selectedSizeAndQty.selectedQty;
+      //     }
+      //   })
+      // })
     })
   }
 

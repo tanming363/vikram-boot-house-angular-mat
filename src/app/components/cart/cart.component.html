@@ -109,10 +109,10 @@
                                 <mat-divider style="margin-top: 10px;margin-bottom: 20px;" inset></mat-divider>
                         </ng-container>
                         <!-- SUBTOTAL-->
-                        <div class="subtotal">
-                                Subtotal ({{numOfItemInCart}} {{numOfItemInCart > 1 ? 'items':'item'}}): {{
-                                total |
-                                currency:'INR'}}
+                        <div class="subtotal" *ngIf="numOfProd$ | async as numOfProd">
+                                Subtotal ({{numOfProd}} {{numOfProd > 1 ? 'items':'item'}}): {{
+                                (total$ | async) |
+                                currency}}
                         </div>
                 </div>
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { BehaviorSubject } from 'rxjs';
 import { sizeAndQtyModel } from '../models/cart.model';
 import { ProductModelServer } from '../models/product.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +12,18 @@ export class CartService {
   productList$ = new BehaviorSubject<ProductModelServer[]>([]);
   wishList$ = new BehaviorSubject<ProductModelServer[]>([]);
   cartTotal$ = new BehaviorSubject<number>(0);
+  numOfProdInCart$ = new BehaviorSubject<number>(0);
   cartItemList: any[] = [];
   wishItemList: any[] = [];
   numOfItemIncart!: number;
-  total!: number;
 
-  constructor(
-    private _snackBar: MatSnackBar
-  ) { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   getProducts() {
     return this.productList$.asObservable();
   }
 
-  setProduct(product: any) {
+  setProduct(product: ProductModelServer[]) {
     this.cartItemList.push(...product);
     this.productList$.next(product);
   }
@@ -48,13 +46,18 @@ export class CartService {
         selectedSizeAndQty: qty,
       })
     }
-    this.getTotal();
-    this._snackBar.open(`${product.title} added to the cart.`, 'close', {
-      duration: 2000,
+    this.snackBar(product.title)
+    this.calculateTotal();
+    this.numOfProdInCart();
+    this.productList$.next(this.cartItemList);
+  }
+
+  snackBar(title: string) {
+    this._snackBar.open(`${title} added to the cart.`, 'close', {
+      duration: 1500,
       horizontalPosition: "right",
       verticalPosition: "bottom",
     });
-    this.productList$.next(this.cartItemList);
   }
 
   //=========== REMOVE CART ITEM============//
@@ -63,7 +66,8 @@ export class CartService {
     if (i !== -1) {
       this.cartItemList.splice(i, 1)
     }
-    this.getTotal();
+    this.calculateTotal();
+    this.numOfProdInCart();
     this.productList$.next(this.cartItemList);
   }
 
@@ -98,7 +102,6 @@ export class CartService {
     this.wishList$.next(this.wishItemList);
     this.removeCartItem(product.id)
     this.productList$.next(this.cartItemList);
-    console.log(this.cartItemList);
   }
 
   //=========== WISHLIST REMOVE ============//
@@ -107,19 +110,28 @@ export class CartService {
     const index = this.wishItemList.indexOf(wishlistItem);
     this.wishItemList.splice(index, 1);
     this.wishList$.next(this.wishItemList);
-    localStorage.setItem("wishlistItems", JSON.stringify(this.wishItemList));
   }
 
   //=========== TOTAL ============//
-  getTotal() {
-    this.cartItemList.findIndex(e => {
-      this.total = e.product.price * e.selectedSizeAndQty.selectedQty;
-      return this.cartTotal$.next(this.total);
+  calculateTotal() {
+    let total: number = 0;
+    this.cartItemList.forEach(e => {
+      total += e.product.price * e.selectedSizeAndQty.selectedQty;
     });
+    this.cartTotal$.next(total);
+  }
+
+  //=========== NUM OF PRODUCT IN CART ============//
+  numOfProdInCart() {
+    let numOfProd: number = 0;
+    this.cartItemList.forEach(e => {
+      numOfProd += e.selectedSizeAndQty.selectedQty
+    });
+    this.numOfProdInCart$.next(numOfProd);
   }
 
   //=========== BUY NOW ============//
-  buyProduct(product: any) {
+  buyProduct(product: ProductModelServer) {
     console.log(product);
   }
 

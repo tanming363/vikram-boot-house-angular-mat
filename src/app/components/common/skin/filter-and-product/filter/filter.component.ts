@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { ProductModelServer, SizeAndQty } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
@@ -25,7 +26,8 @@ export class FilterComponent implements OnInit, OnDestroy {
   allSize: any[] = [];
   allColor: string[] = [];
   allPrice: number[] = [];
-  allMensProd: ProductModelServer[] = [];
+  numOfProd: ProductModelServer[] = [];
+  category!: string;
 
   @Input() sizes: number[] = [];
   @Input() colors: string[] = [];
@@ -38,11 +40,25 @@ export class FilterComponent implements OnInit, OnDestroy {
 
   subscription!: Subscription;
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService, private router: Router) { }
 
   ngOnInit(): void {
     this.subscription = this.productService.getAllProducts().subscribe(res => {
-      this.allMensProd = res.filter(product => product.category === 'men');
+      let url = this.router.url;
+      if (url.includes("/men")) {
+        url = url.replace(url, "gents");
+      }
+      else if (url.includes("/women")) {
+        url = url.replace(url, "ladies");
+      }
+      else if (url.includes("/kids")) {
+        url = url.replace(url, "kids");
+      }
+
+      this.numOfProd = res.filter(product => product.category === url);
+      this.numOfProd.map((el) => {
+        this.category = el.category
+      })
 
       res.filter((product) => {
         // SIZE

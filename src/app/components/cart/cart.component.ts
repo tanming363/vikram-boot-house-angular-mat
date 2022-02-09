@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { sizeAndQtyModel } from '../../models/cart.model';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductModelServer, SizeAndQty, Stock } from 'src/app/models/product.model';
 import { Subscription } from 'rxjs';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-cart',
@@ -17,6 +18,7 @@ export class CartComponent implements OnInit, OnDestroy {
   finalTotal: number = 0;
   selectedQuantity!: null;
   subscription!: Subscription;
+  flexSize!: number;
 
   constructor(
     private cartService: CartService,
@@ -31,7 +33,15 @@ export class CartComponent implements OnInit, OnDestroy {
   total$ = this.cartService.cartTotal$;
   numOfProd$ = this.cartService.numOfProdInCart$;
 
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
+
   ngOnInit(): void {
+    if (this.numOfProd$.getValue() > 0) {
+      this.flexSize = 65;
+    } else {
+      this.flexSize = 100;
+    }
+
     this.getProduct();
   }
 

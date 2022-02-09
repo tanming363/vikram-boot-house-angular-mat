@@ -15,10 +15,31 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      fullname: ['', Validators.required],
+      address1: ['', Validators.required],
+      state: ['Maharashtra',
+        Validators.required],
+      mobile: ['', Validators.required],
+      city: ['', Validators.required],
+      address2: [''],
+      landmark: [''],
+      email: [''],
+      pincode: [''],
+      country: ['India'],
     });
+
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+
   }
+
+  onSubmitFirstFormGroup() {
+    console.log(this.firstFormGroup.value);
+  }
+
+  onSubmitSecondFormGroup() {
+    console.log(this.secondFormGroup.value);
+  }
+
 }

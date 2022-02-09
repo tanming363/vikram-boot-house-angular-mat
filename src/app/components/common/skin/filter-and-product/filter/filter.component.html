@@ -1,8 +1,10 @@
 <div class="filter">
             <div class="filter-gender-items">
                         <div style="display: flex; font-size: 22px;padding: 16px 2px;">
-                                    <span class="gender">MEN'S </span>
-                                    <span class="items">({{allMensProd.length}})</span>
+                                    <span class="gender" *ngIf="category==='gents'">Men's</span>
+                                    <span class="gender" *ngIf="category==='ladies'">Women's</span>
+                                    <span class="gender" *ngIf="category==='kids'">Kid's</span>
+                                    <span class="items">({{numOfProd.length}})</span>
                         </div>
                         <mat-divider></mat-divider>
                         <div class="size-sort-color-price" style="max-height: 100vh;overflow-y: auto;">

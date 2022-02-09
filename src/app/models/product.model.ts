@@ -3,13 +3,10 @@ export interface Stock {
   viewValue: number;
 }
 export interface SizeAndQty {
-  forSize: number,
   availableQty: number,
+  forSize: number,
 }
 export interface ProductModelServer {
-  product: any;
-  selectedSizeAndQty: any;
-  selectedSize: null;
   id: string;
   articleNo: number,
   title: string;
@@ -27,4 +24,7 @@ export interface ProductModelServer {
   firstImage: string,
   otherImages: string[],
   rating: string,
+  product: any;
+  selectedSizeAndQty: any;
+  selectedSize: null;
 }

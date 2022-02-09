@@ -48,6 +48,7 @@ import { SizeFilterPipe } from './pipe/size-filter.pipe';
 import { SortPipe } from './pipe/sort.pipe';
 import { ColorFilterPipe } from './pipe/color-filter.pipe';
 import { PriceFilterPipe } from './pipe/price-filter.pipe';
+import { DiscountCodeComponent } from './components/cart/discount-code/discount-code.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { PriceFilterPipe } from './pipe/price-filter.pipe';
     ColorFilterPipe,
     PriceFilterPipe,
     FilterAndProductComponent,
+    DiscountCodeComponent,
   ],
   imports: [
     BrowserModule,

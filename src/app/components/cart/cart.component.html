@@ -1,133 +1,199 @@
-<div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
-        <!-- PRODUCTS -->
-        <mat-card class="product-description-card" fxFlex="65">
-                <div *ngIf="products.length!==0">
-                        <h1 class="cart-heading">Shopping Cart</h1>
-                        <ng-container *ngFor="let product of products; let i = index">
-                                <mat-card-content>
-                                        <div gdColumns="155px 1fr" gdColumns.xs="86px 1fr" gdGap="15px">
-                                                <a (click)="getSelectedProduct(product.product)">
-                                                        <img class="product-image" mat-card-lg-image
-                                                                [src]="product.product.firstImage">
-                                                </a>
-                                                <ul>
-                                                        <div gdColumns="1fr 1fr" gdRows="1fr">
-                                                                <div>
-                                                                        <li>
-                                                                                <h3 class=" brand-name" body-2>
-                                                                                        {{product.product.title}}
-                                                                                </h3>
-                                                                        </li>
-                                                                        <li>
-                                                                                <p class="brand-details">
-                                                                                        {{product.product.category}}
-                                                                                </p>
-                                                                        </li>
-                                                                        <li>
-                                                                                <p class="brand-details">
-                                                                                        Color :
-                                                                                        {{product.product.color}}
-                                                                                </p>
-                                                                        </li>
-                                                                        <li>
-                                                                                <p class="brand-details">
-                                                                                        Size :
-                                                                                        {{product.selectedSizeAndQty.selectedSize.forSize}}
-                                                                                </p>
-                                                                        </li>
-                                                                </div>
-                                                                <div class="select-quantity">
-                                                                        <li>
-                                                                                <mat-form-field appearance="outline">
-                                                                                        <mat-label>Quantity
-                                                                                        </mat-label>
-                                                                                        <mat-select
-                                                                                                [(value)]="selectedQuantity">
-                                                                                                <mat-option
-                                                                                                        *ngFor="let product of availableStock"
-                                                                                                        [value]="product.value">
-                                                                                                        {{product.viewValue}}
-                                                                                                </mat-option>
-                                                                                        </mat-select>
-                                                                                </mat-form-field>
-                                                                        </li>
-                                                                </div>
-                                                                <div class="action-icons" fxLayout="row"
-                                                                        fxLayout.xs="column">
-                                                                        <li>
-                                                                                <button class="btn-remove"
-                                                                                        mat-raised-button
-                                                                                        (click)="removeItem(product.product)">
-                                                                                        <i
-                                                                                                class="material-icons material-icons-outlined">delete</i>
-                                                                                        <span
-                                                                                                class="brand-details remove">Remove</span>
-                                                                                </button>
-                                                                        </li>
-                                                                        <li class="divider"></li>
-                                                                        <li>
-                                                                                <button class="btn-wish-list"
-                                                                                        mat-raised-button
-                                                                                        (click)="moveToWishList(product.product)">
-                                                                                        <i
-                                                                                                class="material-icons material-icons-outlined">favorite_border</i>
-                                                                                        <span
-                                                                                                class="brand-details wish-list">
-                                                                                                move to wish list
-                                                                                        </span>
-                                                                                </button>
-                                                                        </li>
-                                                                </div>
+<div class="container">
+        <div class="content">
+                <div class="cart" *ngIf="products.length!==0" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+                        fxLayoutGap="20px">
+                        <!-- PRODUCTS -->
+                        <mat-card class="product-description-card" [fxFlex]="flexSize">
+                                <div>
+                                        <h1 class="cart-heading">Shopping Cart</h1>
+                                        <ng-container *ngFor="let product of products; let i = index">
+                                                <mat-card-content>
+                                                        <div gdColumns="155px 1fr" gdColumns.xs="86px 1fr" gdGap="15px">
+                                                                <a (click)="getSelectedProduct(product.product)">
+                                                                        <img class="product-image" mat-card-lg-image
+                                                                                [src]="product.product.firstImage">
+                                                                </a>
+                                                                <ul>
+                                                                        <div gdColumns="1fr 1fr" gdRows="1fr">
+                                                                                <div>
+                                                                                        <li>
+                                                                                                <h3 class=" brand-name"
+                                                                                                        body-2>
+                                                                                                        {{product.product.title}}
+                                                                                                </h3>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                                <p
+                                                                                                        class="brand-details">
+                                                                                                        {{product.product.category}}
+                                                                                                </p>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                                <p
+                                                                                                        class="brand-details">
+                                                                                                        Color :
+                                                                                                        {{product.product.color}}
+                                                                                                </p>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                                <p
+                                                                                                        class="brand-details">
+                                                                                                        Size :
+                                                                                                        {{product.selectedSizeAndQty.selectedSize.forSize}}
+                                                                                                </p>
+                                                                                        </li>
+                                                                                </div>
+                                                                                <div class="select-quantity">
+                                                                                        <li>
+                                                                                                <mat-form-field
+                                                                                                        appearance="outline">
+                                                                                                        <mat-label>
+                                                                                                                Quantity
+                                                                                                        </mat-label>
+                                                                                                        <mat-select
+                                                                                                                [(value)]="selectedQuantity">
+                                                                                                                <mat-option
+                                                                                                                        *ngFor="let product of availableStock"
+                                                                                                                        [value]="product.value">
+                                                                                                                        {{product.viewValue}}
+                                                                                                                </mat-option>
+                                                                                                        </mat-select>
+                                                                                                </mat-form-field>
+                                                                                        </li>
+                                                                                </div>
+                                                                                <div class="action-icons" fxLayout="row"
+                                                                                        fxLayout.xs="column">
+                                                                                        <li>
+                                                                                                <button class="btn-remove"
+                                                                                                        mat-raised-button
+                                                                                                        (click)="removeItem(product.product)">
+                                                                                                        <i
+                                                                                                                class="material-icons material-icons-outlined">delete</i>
+                                                                                                        <span
+                                                                                                                class="brand-details remove">&nbsp;
+                                                                                                                Remove</span>
+                                                                                                </button>
+                                                                                        </li>
+                                                                                        <li class="divider"></li>
+                                                                                        <li>
+                                                                                                <button class="btn-wish-list"
+                                                                                                        mat-raised-button
+                                                                                                        (click)="moveToWishList(product.product)">
+                                                                                                        <i
+                                                                                                                class="material-icons material-icons-outlined">favorite_border</i>
+                                                                                                        <span
+                                                                                                                class="brand-details wish-list">
+                                                                                                                &nbsp;
+                                                                                                                move to
+                                                                                                                wish
+                                                                                                                list
+                                                                                                        </span>
+                                                                                                </button>
+                                                                                        </li>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div fxLayout="row"
+                                                                                fxLayoutAlign="space-between center"
+                                                                                fxLayout.xs="column"
+                                                                                fxLayoutAlign.xs="space-between start">
+                                                                                <div class="shipping">
+                                                                                        <li>
+                                                                                                <i
+                                                                                                        class="material-icons material-icons-outlined">local_shipping</i>
+                                                                                                <span
+                                                                                                        class="brand-details">&nbsp;Expected
+                                                                                                        delivery.
+                                                                                                        Wed,
+                                                                                                        09/09 - Fri,
+                                                                                                        10/09</span>
+                                                                                        </li>
+                                                                                </div>
+                                                                                <div class="price">
+                                                                                        <li fxLayoutAlign="end"
+                                                                                                *ngIf="!product.product.discount">
+                                                                                                <h3 class="brand-price">
+                                                                                                        {{
+                                                                                                        product.product.price
+                                                                                                        |
+                                                                                                        currency}}
+                                                                                                </h3>
+                                                                                        </li>
+                                                                                        <li fxLayoutAlign="end"
+                                                                                                *ngIf="product.product.discount">
+                                                                                                <div class="discount"
+                                                                                                        align="end">
+                                                                                                        <h3
+                                                                                                                class="discount__percent">
+                                                                                                                50%
+                                                                                                                OFF
+                                                                                                        </h3>
+                                                                                                        <div
+                                                                                                                class="beforeDisAndafterDisc">
+                                                                                                                <h3
+                                                                                                                        class="beforeDiscount">
+                                                                                                                        {{
+                                                                                                                        product.product.price
+                                                                                                                        |
+                                                                                                                        currency}}
+                                                                                                                </h3>
+                                                                                                                <h3
+                                                                                                                        class="afterDiscount">
+                                                                                                                        {{
+                                                                                                                        product.product.price
+                                                                                                                        -
+                                                                                                                        product.product.discount
+                                                                                                                        /
+                                                                                                                        100
+                                                                                                                        *
+                                                                                                                        product.product.price
+                                                                                                                        |
+                                                                                                                        currency
+                                                                                                                        }}
+                                                                                                                </h3>
+                                                                                                        </div>
+                                                                                                </div>
+
+                                                                                        </li>
+                                                                                </div>
+                                                                        </div>
+                                                                </ul>
                                                         </div>
-                                                        <div fxLayout="row" fxLayoutAlign="space-between center"
-                                                                fxLayout.xs="column"
-                                                                fxLayoutAlign.xs="space-between start">
-                                                                <div class="shipping">
-                                                                        <li>
-                                                                                <i
-                                                                                        class="material-icons material-icons-outlined">local_shipping</i>
-                                                                                <span class="brand-details">Expected
-                                                                                        delivery.
-                                                                                        Wed,
-                                                                                        09/09 - Fri,
-                                                                                        10/09</span>
-                                                                        </li>
-                                                                </div>
-                                                                <div class="price">
-                                                                        <li fxLayoutAlign="end">
-                                                                                <h3 class="brand-price">
-                                                                                        <span>Price</span> : {{
-                                                                                        product.product.price |
-                                                                                        currency:'INR'}}
-                                                                                </h3>
-                                                                        </li>
-                                                                </div>
-                                                        </div>
-                                                </ul>
+                                                </mat-card-content>
+                                                <mat-divider style="margin-top: 10px;margin-bottom: 20px;" inset>
+                                                </mat-divider>
+                                        </ng-container>
+                                        <!-- SUBTOTAL-->
+                                        <div class="subtotal" *ngIf="numOfProd$ | async as numOfProd">
+                                                Subtotal ({{numOfProd}} {{numOfProd > 1 ? 'items':'item'}}): {{
+                                                (total$ | async) |
+                                                currency}}
                                         </div>
-                                </mat-card-content>
-                                <mat-divider style="margin-top: 10px;margin-bottom: 20px;" inset></mat-divider>
-                        </ng-container>
-                        <!-- SUBTOTAL-->
-                        <div class="subtotal" *ngIf="numOfProd$ | async as numOfProd">
-                                Subtotal ({{numOfProd}} {{numOfProd > 1 ? 'items':'item'}}): {{
-                                (total$ | async) |
-                                currency}}
+                                </div>
+                        </mat-card>
+                        <!-- GRAND TOTAL -->
+                        <div fxFlex="35" *ngIf="numOfProd$ | async as numOfProd">
+                                <div *ngIf="numOfProd > 0">
+                                        <mat-card class="app-order-summary" *ngIf="total$ | async as finalTotal">
+                                                <app-order-summary [total]="finalTotal"></app-order-summary>
+                                        </mat-card>
+                                        <div>
+                                                <app-discount-code></app-discount-code>
+                                        </div>
+                                </div>
                         </div>
                 </div>
 
                 <div class="empty-cart" *ngIf="products.length === 0">
-                        <span class="material-icons-outlined">
-                                shopping_cart
-                        </span>
-                        <h1 class="no-product ">Your Cart is empty</h1>
-                        <button mat-stroked-button (click)="onContinueShopping()">
-                                Continue Shopping
-                        </button>
+                        <div>
+                                <span class="material-icons-outlined">
+                                        shopping_cart
+                                </span>
+                                <h1 class="no-product ">Your Cart is empty</h1>
+                                <button class="btn-primary" mat-flat-button color="primary"
+                                        (click)="onContinueShopping()">
+                                        Continue Shopping
+                                </button>
+                        </div>
                 </div>
-        </mat-card>
-        <!-- GRAND TOTAL -->
-        <mat-card class="app-order-summary" fxFlex="35">
-                <app-order-summary></app-order-summary>
-        </mat-card>
+        </div>
 </div>

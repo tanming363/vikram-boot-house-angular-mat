@@ -1,167 +1,253 @@
-<mat-horizontal-stepper class="checkout-stepper" [linear]="isLinear" #stepper>
-            <mat-step [stepControl]="firstFormGroup">
-                        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
-                                    <mat-card class="name-address" fxFlex="65">
-                                                <form [formGroup]="firstFormGroup">
-                                                            <ng-template matStepLabel>Delivery
-                                                            </ng-template>
-                                                            <h1>Shipping Information</h1>
-                                                            <div fxLayout="row" fxLayout.sm="column"
-                                                                        fxLayout.xs="column" fxLayoutGap="20px">
-                                                                        <div fxFlex="50">
-                                                                                    <mat-form-field
-                                                                                                appearance="outline">
-                                                                                                <mat-label>First Name
-                                                                                                </mat-label>
-                                                                                                <input matInput
-                                                                                                            formControlName="firstCtrl"
-                                                                                                            required />
-                                                                                    </mat-form-field>
-                                                                        </div>
-                                                                        <div fxFlex="50">
-                                                                                    <mat-form-field
-                                                                                                appearance="outline">
-                                                                                                <mat-label>Last Name
-                                                                                                </mat-label>
-                                                                                                <input matInput
-                                                                                                            formControlName="firstCtrl"
-                                                                                                            required />
-                                                                                    </mat-form-field>
-                                                                        </div>
-                                                            </div>
-                                                            <div>
-                                                                        <mat-form-field appearance="outline">
-                                                                                    <mat-label>Address
-                                                                                    </mat-label>
-                                                                                    <input matInput
-                                                                                                formControlName="firstCtrl"
-                                                                                                placeholder="Ex. 1 Main St, New York, NY"
-                                                                                                required />
-                                                                        </mat-form-field>
-                                                            </div>
-                                                            <div>
-                                                                        <mat-form-field appearance="outline">
-                                                                                    <mat-label>Address line 2
-                                                                                    </mat-label>
-                                                                                    <input matInput
-                                                                                                placeholder="Ex. 1 Main St, New York, NY" />
-                                                                        </mat-form-field>
-                                                            </div>
-                                                            <div fxLayout="row" fxLayout.sm="column"
-                                                                        fxLayout.xs="column" fxLayoutGap="20px">
-                                                                        <div fxFlex="50">
-                                                                                    <mat-form-field
-                                                                                                appearance="outline">
-                                                                                                <mat-label>City
-                                                                                                </mat-label>
-                                                                                                <input matInput
-                                                                                                            formControlName="firstCtrl"
-                                                                                                            required />
-                                                                                    </mat-form-field>
-                                                                        </div>
-                                                                        <div fxFlex="50">
-                                                                                    <mat-form-field
-                                                                                                appearance="outline">
-                                                                                                <mat-label>Pin Code
-                                                                                                </mat-label>
-                                                                                                <input matInput
-                                                                                                            formControlName="firstCtrl"
-                                                                                                            required />
-                                                                                    </mat-form-field>
-                                                                        </div>
-                                                            </div>
-                                                            <div>
-                                                                        <mat-form-field appearance="outline">
-                                                                                    <mat-label>mobile Phone Number
-                                                                                    </mat-label>
-                                                                                    <input matInput
-                                                                                                formControlName="firstCtrl"
-                                                                                                required />
-                                                                        </mat-form-field>
-                                                            </div>
-                                                            <div>
-                                                                        <button mat-button matStepperNext>Next</button>
-                                                            </div>
-                                                </form>
-                                    </mat-card>
-                                    <mat-card class="app-order-summary" fxFlex="35">
-                                                <app-order-summary></app-order-summary>
-                                    </mat-card>
-                        </div>
-            </mat-step>
-            <mat-step [stepControl]="secondFormGroup">
-                        <form [formGroup]="secondFormGroup">
-                                    <ng-template matStepLabel>Payment</ng-template>
-                                    <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
-                                                <mat-card class="name-address" fxFlex="65">
-                                                            <form [formGroup]="firstFormGroup">
-                                                                        <ng-template matStepLabel>Delivery
-                                                                        </ng-template>
-                                                                        <h1>Payment Method</h1>
-                                                                        <div>
-                                                                                    <mat-form-field
-                                                                                                appearance="outline">
-                                                                                                <mat-label>Address line
-                                                                                                            2
-                                                                                                </mat-label>
-                                                                                                <input matInput
-                                                                                                            placeholder="Ex. 1 Main St, New York, NY" />
-                                                                                    </mat-form-field>
-                                                                        </div>
-                                                                        <div fxLayout="row" fxLayout.sm="column"
-                                                                                    fxLayout.xs="column"
-                                                                                    fxLayoutGap="20px">
-                                                                                    <div fxFlex="50">
+<div class="container">
+            <div class="content">
+                        <mat-horizontal-stepper class="checkout-stepper" [linear]="isLinear" #stepper>
+                                    <mat-step [stepControl]="firstFormGroup">
+                                                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+                                                            fxLayoutGap="20px">
+                                                            <mat-card class="name-address" fxFlex="65">
+                                                                        <form [formGroup]="firstFormGroup"
+                                                                                    (ngSubmit)="onSubmitFirstFormGroup()">
+                                                                                    <ng-template matStepLabel>
+                                                                                                Address
+                                                                                    </ng-template>
+                                                                                    <h1>Shipping Information</h1>
+                                                                                    <div>
                                                                                                 <mat-form-field
                                                                                                             appearance="outline">
-                                                                                                            <mat-label>City
+                                                                                                            <mat-label>Full
+                                                                                                                        Name
                                                                                                             </mat-label>
                                                                                                             <input matInput
-                                                                                                                        formControlName="firstCtrl"
+                                                                                                                        formControlName="fullname"
                                                                                                                         required />
                                                                                                 </mat-form-field>
                                                                                     </div>
-                                                                                    <div fxFlex="50">
+                                                                                    <div>
                                                                                                 <mat-form-field
                                                                                                             appearance="outline">
-                                                                                                            <mat-label>Pin
-                                                                                                                        Code
+                                                                                                            <mat-label>Address
                                                                                                             </mat-label>
                                                                                                             <input matInput
-                                                                                                                        formControlName="firstCtrl"
+                                                                                                                        formControlName="address1"
+                                                                                                                        placeholder="Flat, House no., Building, Company, Apartment"
                                                                                                                         required />
                                                                                                 </mat-form-field>
                                                                                     </div>
-                                                                        </div>
+                                                                                    <div>
+                                                                                                <mat-form-field
+                                                                                                            appearance="outline">
+                                                                                                            <mat-label>Address
+                                                                                                                        line
+                                                                                                                        2
+                                                                                                            </mat-label>
+                                                                                                            <input matInput
+                                                                                                                        formControlName="address2"
+                                                                                                                        placeholder="Area, Street, Sector, Village" />
+                                                                                                </mat-form-field>
+                                                                                    </div>
+                                                                                    <div fxLayout="row"
+                                                                                                fxLayout.sm="column"
+                                                                                                fxLayout.xs="column"
+                                                                                                fxLayoutGap="20px"
+                                                                                                fxLayoutGap.sm="0"
+                                                                                                fxLayoutGap.xs="0">
+                                                                                                <div fxFlex="50">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>Landmark
+                                                                                                                        </mat-label>
+                                                                                                                        <input matInput
+                                                                                                                                    formControlName="landmark"
+                                                                                                                                    placeholder="E.g. near SBI bank" />
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+                                                                                                <div fxFlex="50">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>Pin
+                                                                                                                                    Code
+                                                                                                                        </mat-label>
+                                                                                                                        <input matInput
+                                                                                                                                    formControlName="pincode"
+                                                                                                                                    placeholder="6 digits [0-9] PIN code" />
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+                                                                                    </div>
+                                                                                    <div fxLayout="row"
+                                                                                                fxLayout.sm="column"
+                                                                                                fxLayout.xs="column"
+                                                                                                fxLayoutGap="20px"
+                                                                                                fxLayoutGap.sm="0"
+                                                                                                fxLayoutGap.xs="0">
+                                                                                                <div fxFlex="50">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>
+                                                                                                                                    Email
+                                                                                                                        </mat-label>
+                                                                                                                        <input matInput
+                                                                                                                                    type="email"
+                                                                                                                                    formControlName="email" />
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+                                                                                                <div fxFlex="50">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>
+                                                                                                                                    Mobile
+                                                                                                                        </mat-label>
+                                                                                                                        <span
+                                                                                                                                    matPrefix>+91
+                                                                                                                                    &nbsp;</span>
+                                                                                                                        <input type="tel"
+                                                                                                                                    matInput
+                                                                                                                                    formControlName="mobile"
+                                                                                                                                    required>
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+                                                                                    </div>
+                                                                                    <div fxLayout="row"
+                                                                                                fxLayout.sm="column"
+                                                                                                fxLayout.xs="column"
+                                                                                                fxLayoutGap="20px"
+                                                                                                fxLayoutGap.sm="0"
+                                                                                                fxLayoutGap.xs="0">
+                                                                                                <div fxFlex="33.33">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>City
+                                                                                                                        </mat-label>
+                                                                                                                        <input matInput
+                                                                                                                                    formControlName="city"
+                                                                                                                                    required />
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+                                                                                                <div fxFlex="33.33">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>State
+                                                                                                                        </mat-label>
+                                                                                                                        <input matInput
+                                                                                                                                    readonly
+                                                                                                                                    formControlName="state" />
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+                                                                                                <div fxFlex="33.33">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>Country
+                                                                                                                        </mat-label>
+                                                                                                                        <input matInput
+                                                                                                                                    readonly
+                                                                                                                                    formControlName="country" />
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+
+                                                                                    </div>
+                                                                                    <div align="end">
+                                                                                                <button mat-button
+                                                                                                            matStepperNext>Next</button>
+                                                                                    </div>
+                                                                        </form>
+                                                            </mat-card>
+                                                            <div fxFlex="35">
+                                                                        <mat-card class="app-order-summary">
+                                                                                    <app-order-summary>
+                                                                                    </app-order-summary>
+                                                                        </mat-card>
                                                                         <div>
-                                                                                    <mat-form-field
-                                                                                                appearance="outline">
-                                                                                                <mat-label>mobile Phone
-                                                                                                            Number
-                                                                                                </mat-label>
-                                                                                                <input matInput
-                                                                                                            formControlName="firstCtrl"
-                                                                                                            required />
-                                                                                    </mat-form-field>
+                                                                                    <app-discount-code>
+                                                                                    </app-discount-code>
                                                                         </div>
+                                                            </div>
+                                                </div>
+                                    </mat-step>
+                                    <mat-step [stepControl]="secondFormGroup">
+                                                <ng-template matStepLabel>Payment</ng-template>
+                                                <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+                                                            fxLayoutGap="20px">
+                                                            <mat-card class="name-address" fxFlex="65">
+                                                                        <form [formGroup]="secondFormGroup"
+                                                                                    (ngSubmit)="onSubmitSecondFormGroup()">
+                                                                                    <ng-template matStepLabel>
+                                                                                                Delivery
+                                                                                    </ng-template>
+                                                                                    <h1>Payment Method</h1>
+                                                                                    <div>
+                                                                                                <mat-form-field
+                                                                                                            appearance="outline">
+                                                                                                            <mat-label>Address
+                                                                                                                        line
+                                                                                                                        2
+                                                                                                            </mat-label>
+                                                                                                            <input matInput
+                                                                                                                        placeholder="Ex. 1 Main St, New York, NY" />
+                                                                                                </mat-form-field>
+                                                                                    </div>
+                                                                                    <div fxLayout="row"
+                                                                                                fxLayout.sm="column"
+                                                                                                fxLayout.xs="column"
+                                                                                                fxLayoutGap="20px">
+                                                                                                <div fxFlex="50">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>City
+                                                                                                                        </mat-label>
+                                                                                                                        <input matInput
+                                                                                                                                    formControlName="secondCtrl"
+                                                                                                                                    required />
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+                                                                                                <div fxFlex="50">
+                                                                                                            <mat-form-field
+                                                                                                                        appearance="outline">
+                                                                                                                        <mat-label>Pin
+                                                                                                                                    Code
+                                                                                                                        </mat-label>
+                                                                                                                        <input matInput
+                                                                                                                                    formControlName="secondCtrl"
+                                                                                                                                    required />
+                                                                                                            </mat-form-field>
+                                                                                                </div>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                                <mat-form-field
+                                                                                                            appearance="outline">
+                                                                                                            <mat-label>mobile
+                                                                                                                        Phone
+                                                                                                                        Number
+                                                                                                            </mat-label>
+                                                                                                            <input matInput
+                                                                                                                        formControlName="secondCtrl"
+                                                                                                                        required />
+                                                                                                </mat-form-field>
+                                                                                    </div>
+                                                                                    <div align="end">
+                                                                                                <button mat-button
+                                                                                                            matStepperNext>Next</button>
+                                                                                    </div>
+                                                                        </form>
+                                                            </mat-card>
+                                                            <div fxFlex="35">
+                                                                        <mat-card class="app-order-summary">
+                                                                                    <app-order-summary>
+                                                                                    </app-order-summary>
+                                                                        </mat-card>
                                                                         <div>
-                                                                                    <button mat-button
-                                                                                                matStepperNext>Next</button>
+                                                                                    <app-discount-code>
+                                                                                    </app-discount-code>
                                                                         </div>
-                                                            </form>
-                                                </mat-card>
-                                                <mat-card class="app-order-summary" fxFlex="35">
-                                                            <app-order-summary></app-order-summary>
-                                                </mat-card>
-                                    </div>
-                        </form>
-            </mat-step>
-            <mat-step>
-                        <ng-template matStepLabel>Done</ng-template>
-                        <p>You are now done.</p>
-                        <div>
-                                    <button mat-button matStepperPrevious>Back</button>
-                                    <button mat-button (click)="stepper.reset()">Reset</button>
-                        </div>
-            </mat-step>
-</mat-horizontal-stepper>
+                                                            </div>
+                                                </div>
+                                    </mat-step>
+                                    <mat-step>
+                                                <ng-template matStepLabel>Done</ng-template>
+                                                <p>You are now done.</p>
+                                                <div>
+                                                            <button mat-button matStepperPrevious>Back</button>
+                                                            <button mat-button (click)="stepper.reset()">Reset</button>
+                                                </div>
+                                    </mat-step>
+                        </mat-horizontal-stepper>
+            </div>
+</div>

@@ -116,7 +116,12 @@ export class CartService {
   calculateTotal() {
     let total: number = 0;
     this.cartItemList.forEach(e => {
-      total += e.product.price * e.selectedSizeAndQty.selectedQty;
+      if (e.product.discount) {
+        total += e.product.price -
+          e.product.discount / 100 * e.product.price * e.selectedSizeAndQty.selectedQty;
+      } else {
+        total += e.product.price * e.selectedSizeAndQty.selectedQty;
+      }
     });
     this.cartTotal$.next(total);
   }
@@ -131,8 +136,8 @@ export class CartService {
   }
 
   //=========== BUY NOW ============//
-  buyProduct(product: ProductModelServer) {
-    console.log(product);
+  buyProduct(product: ProductModelServer, qty: sizeAndQtyModel) {
+    console.log(product, qty);
   }
 
 }

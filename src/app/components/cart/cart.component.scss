@@ -1,51 +1,90 @@
-.product-description-card {
-  .brand-name {
-    margin-bottom: 0;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 2px 0px;
-    color: black;
-    text-overflow: ellipsis;
-    text-transform: capitalize;
-  }
-  .brand-details {
-    font-size: 14px;
-    margin-bottom: 0;
-    padding: 2px 0px;
-    text-transform: capitalize;
-  }
-  .price {
-    .brand-price {
+.cart {
+  margin: 10px;
+  .product-description-card {
+    height: 100%;
+
+    .brand-name {
+      margin-bottom: 0;
       font-weight: 500;
       font-size: 16px;
+      padding: 2px 0px;
       color: black;
-      margin: 0;
+      text-overflow: ellipsis;
+      text-transform: capitalize;
+    }
+    .brand-details {
+      font-size: 14px;
+      margin-bottom: 0;
+      padding: 2px 0px;
+      text-transform: capitalize;
+    }
+    .price {
+      .discount {
+        &__percent {
+          margin: 0;
+          display: inline;
+          background-color: #cf0a2c;
+          border-color: #cf0a2c;
+          color: #fff;
+          padding: 2px 4px;
+          height: 24px;
+          font-weight: 500;
+          line-height: 2;
+          font-size: 12px;
+        }
+      }
+      .beforeDisAndafterDisc {
+        display: flex;
+        column-gap: 10px;
+        align-items: center;
+      }
+      .beforeDiscount {
+        font-size: 15px;
+        margin: 15px 0;
+        font-weight: 600;
+        color: #767677;
+        text-decoration: line-through;
+        margin: 0;
+        font-size: 12px;
+      }
+      .afterDiscount {
+        margin: 0;
+        color: #e32b2b;
+        font-weight: 600;
+      }
+      .brand-price {
+        font-weight: 500;
+        font-size: 16px;
+        color: black;
+        margin: 0;
+      }
+    }
+    li {
+      mat-divider {
+        position: inherit;
+      }
+    }
+    .material-icons {
+      font-size: 18px;
+      // padding: 7px 7px 7px 0;
+    }
+    .action-icons {
+      .divider {
+        margin: 0 5px;
+      }
+    }
+    mat-card-content {
+      margin-bottom: 0;
+      a {
+        cursor: pointer;
+      }
     }
   }
-  li {
-    mat-divider {
-      position: inherit;
+  ::ng-deep {
+    mat-card {
+      padding: 24px;
     }
   }
-  .material-icons {
-    font-size: 18px;
-    padding: 7px 7px 7px 0;
-  }
-  .action-icons {
-    .divider {
-      margin: 0 5px;
-    }
-  }
-  mat-card-content {
-    margin-bottom: 0;
-    a {
-      cursor: pointer;
-    }
-  }
-  // .cart-heading {
-  //   font-size: 28px;
-  //   font-weight: 600;
-  // }
 }
 
 ul {
@@ -58,13 +97,6 @@ ul {
   padding-left: 0px;
 }
 
-.mat-flat-button {
-  background: #ba7b48;
-  color: #dbc295;
-}
-.app-order-summary {
-  height: 275px;
-}
 .subtotal {
   display: flex;
   justify-content: flex-end;
@@ -75,8 +107,11 @@ ul {
   margin: 0;
 }
 .empty-cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   text-align: center;
-  padding: 0px 16px;
+  padding: 24px;
 
   .material-icons-outlined {
     font-size: 100px;
@@ -85,13 +120,15 @@ ul {
     font-weight: 700;
   }
   button {
-    font-weight: 600;
+    padding: 6px 16px;
+    @media (min-width: "960px") {
+      width: 250px;
+    }
   }
 }
 
 @media (max-width: 2800px) {
   .product-image {
-    // width: 89%;
     height: 96%;
   }
   .select-quantity {
@@ -183,7 +220,7 @@ h1 {
   margin: 0 0 16px 0;
   padding: 0px;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
 }
 ::ng-deep {
   .mat-card-header-text {
@@ -208,12 +245,5 @@ h1 {
     .mat-form-field-wrapper {
       padding: 5px 0;
     }
-  }
-}
-
-::ng-deep {
-  mat-card {
-    margin: 10px;
-    padding: 0 15px;
   }
 }

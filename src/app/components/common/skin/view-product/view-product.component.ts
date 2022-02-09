@@ -93,7 +93,7 @@ export class ViewProductComponent implements OnInit, OnDestroy {
   addItemToCart(product: ProductModelServer) {
     let selectedQtySizeArr = this.onSelectedQty();
     let selectedQtySizeObj = { selectedQty: selectedQtySizeArr[0], selectedSize: selectedQtySizeArr[1] };
-    product.selectedSize = selectedQtySizeArr[1];
+    // product.selectedSize = selectedQtySizeArr[1];
     this.cartService.addtoCart(product, selectedQtySizeObj);
   }
 
@@ -131,7 +131,11 @@ export class ViewProductComponent implements OnInit, OnDestroy {
         product: product.title.toString().replace(/\s/g, '-'),
       }
     });
-    this.cartService.buyProduct(product);
+
+    let selectedQtySizeArr = this.onSelectedQty();
+    let selectedQtySizeObj = { selectedQty: selectedQtySizeArr[0], selectedSize: selectedQtySizeArr[1] };
+    // product.selectedSize = selectedQtySizeArr[1];
+    this.cartService.buyProduct(product, selectedQtySizeObj);
   }
 
   getSelectedColorProduct(product: ProductModelServer) {

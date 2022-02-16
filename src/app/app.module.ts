@@ -49,6 +49,8 @@ import { SortPipe } from './pipe/sort.pipe';
 import { ColorFilterPipe } from './pipe/color-filter.pipe';
 import { PriceFilterPipe } from './pipe/price-filter.pipe';
 import { DiscountCodeComponent } from './components/cart/discount-code/discount-code.component';
+import { CustomerModule } from './customer/customer.module';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { DiscountCodeComponent } from './components/cart/discount-code/discount-
     PriceFilterPipe,
     FilterAndProductComponent,
     DiscountCodeComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,8 @@ import { DiscountCodeComponent } from './components/cart/discount-code/discount-
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    // CustomerModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

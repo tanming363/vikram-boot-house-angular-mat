@@ -11,6 +11,10 @@
       color: black;
       text-overflow: ellipsis;
       text-transform: capitalize;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
     .brand-details {
       font-size: 14px;

@@ -16,8 +16,7 @@ export interface ProductModelServer {
   numOfColor: number,
   category: string;
   description: string;
-  tags: string[],
-  // sizeAndqty: SizeAndQty[],
+  tags: any[],
   sizeAndqty: any,
   forSize: number,
   availableQty: number,
@@ -26,5 +25,6 @@ export interface ProductModelServer {
   rating: string,
   product: any;
   selectedSizeAndQty: any;
-  selectedSize: null;
+  selectedSize: any;
+  selectedQty: any;
 }

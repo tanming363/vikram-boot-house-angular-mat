@@ -8,6 +8,7 @@ import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { sizeAndQtyModel } from 'src/app/models/cart.model';
 import { ProductModelServer, SizeAndQty, Stock } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
+import { DashboardOrderListService } from 'src/app/services/dashboard/dashboard-order-list.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { SpinnerUiService } from 'src/app/services/spinner-ui.service';
 
@@ -44,7 +45,8 @@ export class ViewProductComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private router: Router,
-    private spinnerUiService: SpinnerUiService
+    private spinnerUiService: SpinnerUiService,
+    private dshboardOrderListService: DashboardOrderListService,
   ) { this.spinnerUiService.spin$.next(true); }
 
   model: sizeAndQtyModel = {
@@ -54,7 +56,6 @@ export class ViewProductComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     setTimeout(() => this.spinnerUiService.spin$.next(false), 1500);
-
     this.subscription = this.activatedRoute.paramMap.pipe(
       map((param: ParamMap) => {
         // @ts-ignore
@@ -131,21 +132,22 @@ export class ViewProductComponent implements OnInit, OnDestroy {
         product: product.title.toString().replace(/\s/g, '-'),
       }
     });
-
     let selectedQtySizeArr = this.onSelectedQty();
     let selectedQtySizeObj = { selectedQty: selectedQtySizeArr[0], selectedSize: selectedQtySizeArr[1] };
+    console.log(selectedQtySizeArr);
     // product.selectedSize = selectedQtySizeArr[1];
-    this.cartService.buyProduct(product, selectedQtySizeObj);
+    // const a = product.selectedSize;
+    // console.log(Object.values(a));
+    // this.cartService.buyProduct(product, selectedQtySizeObj);
+    this.subscription = this.dshboardOrderListService.sendOrder(product, selectedQtySizeObj as unknown as SizeAndQty).subscribe((data => data));
   }
 
   getSelectedColorProduct(product: ProductModelServer) {
-    setTimeout(() => {
-      this.router.navigate(['/', product.id], {
-        queryParams: {
-          product: product.title.toString().replace(/\s/g, '-'),
-        }
-      })
-    }, 300);
+    this.router.navigate(['/', product.id], {
+      queryParams: {
+        product: product.title.toString().replace(/\s/g, '-'),
+      }
+    })
   }
 
   ngOnDestroy(): void {

@@ -51,7 +51,8 @@ export class ProductsComponent implements OnInit {
   }
 
   selectProduct(product: ProductModelServer): void {
-    this.router.navigate(['/', product.id], {
+    // this.router.navigate(['/', product.id], {
+    this.router.navigate(['/product/', product.id], {
       queryParams: {
         product: product.title.toString().replace(/\s/g, '-'),
       }

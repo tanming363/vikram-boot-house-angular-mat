@@ -7,10 +7,10 @@ export interface Order {
             color: string,
             category: string;
             firstImage: string,
-            otherImages: string[],
             selectedQty: number,
-            selectedSize: {
-                        availableQty: number,
-                        forSize: number,
-            },
+            // otherImages: string[],
+            // selectedSize: {
+            //             availableQty: number,
+            //             forSize: number,
+            // },
 }

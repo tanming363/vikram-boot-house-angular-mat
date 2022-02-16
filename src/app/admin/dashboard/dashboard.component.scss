@@ -1,0 +1,42 @@
+.dashboard-container {
+  position: relative;
+  padding: 20px;
+}
+.dashboard-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  text-transform: uppercase;
+}
+
+td {
+  text-transform: capitalize;
+}
+
+.img {
+  height: 50px;
+  width: 50px;
+  border-radius: 0.75rem;
+  vertical-align: middle;
+  padding: 5px;
+}
+
+.dashboard-table-container {
+  position: relative;
+  min-height: 115px;
+  overflow: auto;
+}

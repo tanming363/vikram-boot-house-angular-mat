@@ -11,6 +11,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SportsComponent } from './components/categories/sports/sports.component';
 import { WomenComponent } from './components/categories/women/women.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -25,8 +26,9 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'cart', component: CartComponent },
   { path: 'wishlist', component: WishlistComponent },
-  // { path: 'product/:id', component: ViewProductComponent },
-  { path: ':id', component: ViewProductComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'product/:id', component: ViewProductComponent },
+  // { path: ':id', component: ViewProductComponent },
   { path: 'checkout/:id', component: CheckoutComponent },
   // { path: '**', component: PageNotFoundComponent }
 ];

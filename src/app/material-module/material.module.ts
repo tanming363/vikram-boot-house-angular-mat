@@ -25,7 +25,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSliderModule } from '@angular/material/slider';
 import { OverlayModule } from '@angular/cdk/overlay';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 const MaterialComponents = [
   MatInputModule,
@@ -53,7 +54,9 @@ const MaterialComponents = [
   MatProgressBarModule,
   MatChipsModule,
   MatSliderModule,
-  OverlayModule
+  OverlayModule,
+  MatTableModule,
+  MatSortModule,
 ]
 
 @NgModule({

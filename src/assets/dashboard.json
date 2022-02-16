@@ -1,0 +1,55 @@
+{
+  "Orders": [
+    {
+      "id": "2",
+      "articleNo": 2413,
+      "title": "terrex ax4 primegreen hiking shoes",
+      "price": 200,
+      "discount": 20,
+      "color": "blue",
+      "numOfColor": 3,
+      "category": "ladies",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting",
+      "tags": [
+        "blue",
+        7,
+        9,
+        10
+      ],
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/9f4e84690ff143599698ad5201059b6f_9366/terrex-ax4-primegreen-hiking-shoes.jpg",
+      "otherImages": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/548a2b86cd8f43758534ad3500cad80e_9366/Terrex_Skyhiker_GORE-TEX_Hiking_Shoes_Niebieski_FZ3345_02_standard_hover.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/ac139340b5f948118332ad3500cae395_9366/Terrex_Skyhiker_GORE-TEX_Hiking_Shoes_Niebieski_FZ3345_04_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg"
+      ],
+      "rating": "4 star",
+      "selectedSize": [
+        null,
+        7
+      ],
+      "selectedQty": [
+        1,
+        {
+          "forSize": 7,
+          "availableQty": 1
+        }
+      ]
+    }
+  ]
+}

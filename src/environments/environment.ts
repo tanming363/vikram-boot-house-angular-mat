@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   serverURL: 'http://localhost:3000/Products',
   serverURL_changeImg: 'http://localhost:4000/Images',
+  serverURL_dashborad_orders: 'http://localhost:5000/Orders',
   environmentName: 'local'
 };
 

@@ -87,7 +87,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   getSelectedProduct(product: ProductModelServer): void {
-    this.router.navigate([`${product.id}`], {
+    this.router.navigate([`/product/${product.id}`], {
       queryParams: {
         category: product.category,
         '': product.title

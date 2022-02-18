@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { ProductModelServer } from 'src/app/models/product.model';
 import { DashboardOrderListService } from 'src/app/services/dashboard/dashboard-order-list.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subscription, merge, Observable, of as observableOf } from 'rxjs';
+import { Subscription, merge, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -14,10 +14,11 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 })
 export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
 
-  displayedColumns: string[] = ['firstImage',
+  displayedColumns: string[] = [
+    'firstImage',
     'articleNo',
-    'price',
     'discount',
+    'price',
     'title',
     'color',
     'category',

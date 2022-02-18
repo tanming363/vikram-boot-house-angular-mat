@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
-import { Subscription } from 'rxjs';
-import { map } from "rxjs/operators";
+import { Observable, Subscription } from 'rxjs';
+import { delay, map } from "rxjs/operators";
 
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { sizeAndQtyModel } from 'src/app/models/cart.model';
+import { Order } from 'src/app/models/order.model';
 import { ProductModelServer, SizeAndQty, Stock } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { DashboardOrderListService } from 'src/app/services/dashboard/dashboard-order-list.service';
@@ -38,6 +39,7 @@ export class ViewProductComponent implements OnInit, OnDestroy {
   productImages5: string = "";
 
   subscription!: Subscription;
+  getAllProd$!: Observable<ProductModelServer[]>;
 
   constructor(
     private cartService: CartService,
@@ -46,14 +48,13 @@ export class ViewProductComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private router: Router,
     private spinnerUiService: SpinnerUiService,
-    private dshboardOrderListService: DashboardOrderListService,
+    private dashboardOrderListService: DashboardOrderListService,
   ) { this.spinnerUiService.spin$.next(true); }
 
   model: sizeAndQtyModel = {
     selectedQty: null,
     selectedSize: null,
   };
-
   ngOnInit(): void {
     setTimeout(() => this.spinnerUiService.spin$.next(false), 1500);
     this.subscription = this.activatedRoute.paramMap.pipe(
@@ -72,16 +73,14 @@ export class ViewProductComponent implements OnInit, OnDestroy {
         this.product = prod;
         this.availableSizesAndQty = prod.sizeAndqty.filter((el: ProductModelServer) => el.forSize);
       });
+
       this.subscription = this.productService.getAllProducts().subscribe((product) => {
+        product.filter(color => color.id === this.product.id ? this.selectedColor = color : '');
         this.availableColors = product;
-        product.forEach(color => {
-          if (color.id === this.product.id) {
-            this.selectedColor = color;
-          }
-        });
-      })
-    })
+      });
+    });
   }
+
 
   onSelectedQty() {
     return [
@@ -91,14 +90,14 @@ export class ViewProductComponent implements OnInit, OnDestroy {
   }
 
   // ADD TO CART
-  addItemToCart(product: ProductModelServer) {
+  addItemToCart(product: ProductModelServer): void {
     let selectedQtySizeArr = this.onSelectedQty();
     let selectedQtySizeObj = { selectedQty: selectedQtySizeArr[0], selectedSize: selectedQtySizeArr[1] };
     // product.selectedSize = selectedQtySizeArr[1];
     this.cartService.addtoCart(product, selectedQtySizeObj);
   }
 
-  getSize(size: SizeAndQty, index: number) {
+  getSize(size: SizeAndQty, index: number): void {
     this.alertSize = size.forSize;
     this.availableSizesAndQty.forEach((el, i) => {
       if (index === i) {
@@ -122,27 +121,30 @@ export class ViewProductComponent implements OnInit, OnDestroy {
     }, []);
   };
 
-  openDialog() {
+  openDialog(): void {
     this.dialog.open(DialogComponent);
   }
 
-  buyNow(product: ProductModelServer) {
+  buyNow(product: any): void {
+    delete product.id; // since I can't post same id to server so that I am deleting ID
+    delete product.otherImages;
+    delete product.tags;
+    delete product.description;
+    delete product.rating;
+
+    let selectedQtySizeArr = this.onSelectedQty();
+    let selectedQtySizeObj = { selectedQty: selectedQtySizeArr[0], selectedSize: selectedQtySizeArr[1] };
+    console.log(product);
+
+    this.subscription = this.dashboardOrderListService.sendOrder(product as Order, selectedQtySizeObj as unknown as SizeAndQty).subscribe((data => data));
     this.router.navigate([`checkout/${product.id}`], {
       queryParams: {
         product: product.title.toString().replace(/\s/g, '-'),
       }
     });
-    let selectedQtySizeArr = this.onSelectedQty();
-    let selectedQtySizeObj = { selectedQty: selectedQtySizeArr[0], selectedSize: selectedQtySizeArr[1] };
-    console.log(selectedQtySizeArr);
-    // product.selectedSize = selectedQtySizeArr[1];
-    // const a = product.selectedSize;
-    // console.log(Object.values(a));
-    // this.cartService.buyProduct(product, selectedQtySizeObj);
-    this.subscription = this.dshboardOrderListService.sendOrder(product, selectedQtySizeObj as unknown as SizeAndQty).subscribe((data => data));
   }
 
-  getSelectedColorProduct(product: ProductModelServer) {
+  getSelectedColorProduct(product: ProductModelServer): void {
     this.router.navigate(['/', product.id], {
       queryParams: {
         product: product.title.toString().replace(/\s/g, '-'),

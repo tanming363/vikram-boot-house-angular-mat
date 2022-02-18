@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { Order } from 'src/app/models/order.model';
 import { ProductModelServer, SizeAndQty } from 'src/app/models/product.model';
 import { environment } from 'src/environments/environment';
 
@@ -12,13 +13,12 @@ export class DashboardOrderListService {
 
   constructor(private http: HttpClient) { }
 
-  sendOrder(product: ProductModelServer, sizeAndqty: SizeAndQty): Observable<ProductModelServer> {
+  sendOrder(product: Order, sizeAndqty: SizeAndQty): Observable<Order> {
     const size = Object.values(sizeAndqty).map(k => k.forSize);
     const qty = Object.values(sizeAndqty).map(k => k);
     product.selectedSize = size;
     product.selectedQty = qty;
-    console.log(product);
-    return this.http.post<ProductModelServer>(this.url, product);
+    return this.http.post<Order>(this.url, product);
   }
 
   getOrders(): Observable<ProductModelServer[]> {

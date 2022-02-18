@@ -32,12 +32,15 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
 
   // ELEMENT_DATA!: ProductModelServer[];
+  resultsLength = 0;
   isLoadingResults = true;
   dataSource = new MatTableDataSource<ProductModelServer>();
 
   constructor(private dshboardOrderListService: DashboardOrderListService) { }
 
   ngOnInit(): void {
+    console.log(this.dataSource.data.length);
+
     // this.dshboardOrderListService.getOrders().subscribe(res => this.dataSource.data = res as ProductModelServer[]);
   }
 
@@ -57,6 +60,7 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
           if (data === null) {
             return [];
           }
+          this.resultsLength = data.length;
           return data;
         }),
       )

@@ -39,3 +39,17 @@ td {
   min-height: 200px;
   overflow: auto;
 }
+::ng-deep {
+  .delivered {
+    background-color: #78ed78 !important;
+  }
+  .shipped {
+    background-color: #fb7a7e !important;
+  }
+  .processing {
+    background-color: #fbe62e !important;
+  }
+  .cancelled {
+    background-color: #cdcdcd !important;
+  }
+}

@@ -1,25 +1,21 @@
 {
   "Orders": [
     {
-      "id": "2",
       "articleNo": 2413,
       "title": "terrex ax4 primegreen hiking shoes",
-      "price": 200,
-      "discount": 20,
-      "color": "blue",
+      "price": 20000,
+      "discount": 10,
+      "color": "red",
       "numOfColor": 3,
-      "category": "ladies",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting",
-      "tags": [
-        "blue",
-        7,
-        9,
-        10
-      ],
+      "category": "kids",
       "sizeAndqty": [
         {
           "forSize": 7,
           "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
         },
         {
           "forSize": 9,
@@ -30,15 +26,7 @@
           "availableQty": 3
         }
       ],
-      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/9f4e84690ff143599698ad5201059b6f_9366/terrex-ax4-primegreen-hiking-shoes.jpg",
-      "otherImages": [
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg",
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/548a2b86cd8f43758534ad3500cad80e_9366/Terrex_Skyhiker_GORE-TEX_Hiking_Shoes_Niebieski_FZ3345_02_standard_hover.jpg",
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/ac139340b5f948118332ad3500cae395_9366/Terrex_Skyhiker_GORE-TEX_Hiking_Shoes_Niebieski_FZ3345_04_standard.jpg",
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg",
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f32fbc9774394676b24cad5200ddeb85_9366/Terrex_AX4_Primegreen_Hiking_Shoes_Niebieski_FZ3281_01_standard.jpg"
-      ],
-      "rating": "4 star",
+      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/4ae83a76bd7743e5ac11ad4f0116528b_9366/terrex-ax4-primegreen-hiking-shoes.jpg",
       "selectedSize": [
         null,
         7
@@ -49,7 +37,178 @@
           "forSize": 7,
           "availableQty": 1
         }
-      ]
+      ],
+      "dateAndTime": "19/02/2022, 12:08 AM",
+      "orderStatus": "shipped",
+      "id": 1
+    },
+    {
+      "articleNo": 2413,
+      "title": "terrex ax4 primegreen hiking shoes",
+      "price": 20000,
+      "discount": 10,
+      "color": "red",
+      "numOfColor": 3,
+      "category": "kids",
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/4ae83a76bd7743e5ac11ad4f0116528b_9366/terrex-ax4-primegreen-hiking-shoes.jpg",
+      "selectedSize": [
+        null,
+        8
+      ],
+      "selectedQty": [
+        2,
+        {
+          "forSize": 8,
+          "availableQty": 2
+        }
+      ],
+      "dateAndTime": "19/02/2022, 12:08 AM",
+      "orderStatus": "cancelled",
+      "id": 2
+    },
+    {
+      "articleNo": 2413,
+      "title": "terrex ax4 primegreen hiking shoes",
+      "price": 20000,
+      "discount": 10,
+      "color": "red",
+      "numOfColor": 3,
+      "category": "kids",
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/4ae83a76bd7743e5ac11ad4f0116528b_9366/terrex-ax4-primegreen-hiking-shoes.jpg",
+      "selectedSize": [
+        null,
+        10
+      ],
+      "selectedQty": [
+        2,
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "dateAndTime": "19/02/2022, 12:09 AM",
+      "orderStatus": "processing",
+      "id": 3
+    },
+    {
+      "articleNo": 2414,
+      "title": "NMD_R1 shoes",
+      "price": 1000,
+      "discount": 50,
+      "color": "lightblue",
+      "numOfColor": 3,
+      "category": "gents",
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/a673abf86fbd4d8a96f5acc3004b87c9_9366/ultraboost-5.0-dna-shoes.jpg",
+      "selectedSize": [
+        null,
+        10
+      ],
+      "selectedQty": [
+        1,
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "dateAndTime": "19/02/2022, 12:19 AM",
+      "orderStatus": "shipped",
+      "id": 4
+    },
+    {
+      "articleNo": 2414,
+      "title": "NMD_R1 shoes",
+      "price": 1000,
+      "discount": 50,
+      "color": "lightblue",
+      "numOfColor": 3,
+      "category": "gents",
+      "sizeAndqty": [
+        {
+          "forSize": 7,
+          "availableQty": 1
+        },
+        {
+          "forSize": 8,
+          "availableQty": 2
+        },
+        {
+          "forSize": 9,
+          "availableQty": 1
+        },
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "firstImage": "https://assets.adidas.com/images/w_303,h_303,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/a673abf86fbd4d8a96f5acc3004b87c9_9366/ultraboost-5.0-dna-shoes.jpg",
+      "selectedSize": [
+        null,
+        10
+      ],
+      "selectedQty": [
+        1,
+        {
+          "forSize": 10,
+          "availableQty": 3
+        }
+      ],
+      "dateAndTime": "19/02/2022, 12:20 AM",
+      "orderStatus": "delivered",
+      "id": 5
     }
   ]
 }

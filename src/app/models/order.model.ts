@@ -1,5 +1,4 @@
 export interface Order {
-            // id: string;
             articleNo: number,
             title: string;
             price: number;
@@ -7,13 +6,11 @@ export interface Order {
             color: string,
             category: string;
             firstImage: string,
-            // selectedQty: number,
-            // otherImages: string[],
-            // selectedSize: {
-            //             availableQty: number,
-            //             forSize: number,
-            // },
             selectedSizeAndQty: any;
             selectedSize: any;
             selectedQty: any;
+            dateAndTime: string;
+            orderStatus: string;
+            paymentStatus: string;
+            paymentMethod: string;
 }

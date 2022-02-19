@@ -23,7 +23,9 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
     'color',
     'category',
     'selectedSize',
-    'selectedQty'
+    'selectedQty',
+    'dateAndTime',
+    'orderStatus',
   ];
 
   subscription!: Subscription;
@@ -39,8 +41,6 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
   constructor(private dshboardOrderListService: DashboardOrderListService) { }
 
   ngOnInit(): void {
-    console.log(this.dataSource.data.length);
-
     // this.dshboardOrderListService.getOrders().subscribe(res => this.dataSource.data = res as ProductModelServer[]);
   }
 
